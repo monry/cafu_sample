@@ -1,0 +1,12 @@
+{
+    "name": "monry@cafu_sample",
+    "references": [
+        "umm@cafu_core",
+        "umm@unirx",
+        "umm@zenject"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

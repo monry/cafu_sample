@@ -1,0 +1,33 @@
+{
+  "name": "@monry/cafu_sample",
+  "version": "1.0.0",
+  "description": "Sample game for CAFU",
+  "homepage": "https://github.com/umm-projects/cafu_sample",
+  "bugs": {
+    "url": "https://github.com/umm-projects/cafu_sample/issues"
+  },
+  "scripts": {
+    "umm:init": "umm-init",
+    "umm:generate_assembly_definition": "umm-generate_assembly_definition",
+    "umm:module:install": "umm-module-install",
+    "umm:module:uninstall": "umm-module-uninstall",
+    "postinstall": "npm run --silent umm:module:install",
+    "postuninstall": "npm run --silent umm:module:uninstall"
+  },
+  "author": "Tetsuya Mori",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:umm-projects/cafu_sample"
+  },
+  "files": [
+    "Assets"
+  ],
+  "dependencies": {
+    "@umm/cafu_core": "umm/cafu_core#^2.0.0",
+    "@umm/scripts": "umm/scripts#^1.0.0",
+    "@umm/unirx": "umm/unirx#^2.0.0",
+    "@umm/zenject": "umm/zenject#^1.0.0"
+  },
+  "devDependencies": {}
+}
