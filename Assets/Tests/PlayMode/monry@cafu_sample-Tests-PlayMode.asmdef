@@ -1,0 +1,17 @@
+{
+    "name": "monry@cafu_sample-Tests-PlayMode",
+    "references": [
+        "monry@cafu_sample",
+        "umm@cafu_core",
+        "umm@unirx",
+        "Zenject",
+        "Zenject-Editor-Testing",
+        "Zenject-OptionalExtras-Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
