@@ -24,10 +24,11 @@
     "Assets"
   ],
   "dependencies": {
+    "@umm/animationevent_dispatcher": "umm/animationevent_dispatcher#^1.0.0",
     "@umm/cafu_core": "umm/cafu_core#^2.0.0",
     "@umm/scripts": "umm/scripts#^1.0.0",
     "@umm/unirx": "umm/unirx#^2.0.0",
-    "@umm/zenject": "umm/zenject#^1.0.0"
+    "@umm/zenject": "umm/zenject#^2.0.0"
   },
   "devDependencies": {}
 }

@@ -1,9 +1,11 @@
 {
     "name": "monry@cafu_sample",
     "references": [
+        "umm@animationevent_dispatcher",
         "umm@cafu_core",
         "umm@unirx",
-        "umm@zenject"
+        "Zenject",
+        "umm@extra_zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

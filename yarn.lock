@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@umm/animationevent_dispatcher@umm/animationevent_dispatcher#^1.0.0":
+  version "1.4.1"
+  resolved "https://codeload.github.com/umm/animationevent_dispatcher/tar.gz/351f7a017721cca50df709f86f2c44f57030c5b8"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/singleton_audiolistener" umm/singleton_audiolistener#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
 "@umm/cafu_core@umm/cafu_core#^2.0.0":
   version "2.7.2"
   resolved "https://codeload.github.com/umm/cafu_core/tar.gz/efc0aee5158f42ef68fb978f7e9b61d676cf8678"
@@ -10,6 +18,12 @@
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
+"@umm/moq@umm/moq#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/moq/tar.gz/5c3b47795a773b637a98e13c534236fb927a5bda"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
 "@umm/scripts@umm/scripts#^1.0.0":
   version "1.3.3"
   resolved "https://codeload.github.com/umm/scripts/tar.gz/4ab3f9359c3a0964e120a7dd22f30cf1779bf614"
@@ -17,6 +31,12 @@
     glob "^7.1.2"
     ignore-walk "^3.0.1"
     mkdirp "^0.5.1"
+
+"@umm/singleton_audiolistener@umm/singleton_audiolistener#^1.0.0":
+  version "1.2.1"
+  resolved "https://codeload.github.com/umm/singleton_audiolistener/tar.gz/89ae7a7f8dd686ab2f4b98bedf55d13206a07130"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/unirx@umm/unirx#^2.0.0":
   version "2.1.1"
@@ -31,10 +51,11 @@
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
 
-"@umm/zenject@umm/zenject#^1.0.0":
-  version "1.0.1"
-  resolved "https://codeload.github.com/umm/zenject/tar.gz/59d977a8a6af98510abf9bbac83f6fb91cdb6de2"
+"@umm/zenject@umm/zenject#^2.0.0":
+  version "2.1.1"
+  resolved "https://codeload.github.com/umm/zenject/tar.gz/d21ab2e6454577af81f29e4d4a89ae0397bfe724"
   dependencies:
+    "@umm/moq" umm/moq#^1.0.0
     "@umm/scripts" umm/scripts#^1.0.0
 
 balanced-match@^1.0.0:
