@@ -1,6 +1,6 @@
 using CAFU.Core.Domain.Model;
 
-namespace CAFUSample.Domain.Model
+namespace Monry.CAFUSample.Domain.Model
 {
     public interface IRankingModel : IModel
     {

@@ -1,6 +1,6 @@
 using CAFU.Core.Data.Entity;
 
-namespace CAFUSample.Data.Entity
+namespace Monry.CAFUSample.Data.Entity
 {
     public interface IScoreEntity : IEntity
     {

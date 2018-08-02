@@ -1,7 +1,7 @@
 using CAFU.Core.Domain.Translator;
-using CAFUSample.Data.Entity;
+using Monry.CAFUSample.Data.Entity;
 
-namespace CAFUSample.Domain.Translator
+namespace Monry.CAFUSample.Domain.Translator
 {
     public class ScoreEntityTranslator : IEntityTranslator<int, IScoreEntity>
     {
