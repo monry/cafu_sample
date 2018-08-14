@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4917016771474002}
   - component: {fileID: 212231321306715066}
   - component: {fileID: 95503112216787520}
+  - component: {fileID: 114024313741645290}
   m_Layer: 0
   m_Name: Mole_Image
   m_TagString: Untagged
@@ -169,7 +170,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014564077545020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -206,6 +207,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114024313741645290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350790520916560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cc5ed689c0c429bb196d68f9e60aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114364935191383186
 MonoBehaviour:
   m_ObjectHideFlags: 1

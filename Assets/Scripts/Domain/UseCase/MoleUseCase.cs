@@ -1,34 +1,57 @@
+using System;
+using System.Collections.Generic;
 using CAFU.Core.Domain.UseCase;
-using Monry.CAFUSample.Domain.Model;
+using ExtraLinq;
+using Monry.CAFUSample.Application;
+using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Presentation.Presenter;
+using UniRx;
+using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public class MoleUseCase : IUseCase, IInitializable
+    public interface IMoleUseCase
     {
-        [Inject] private IGameStateModel GameStateModel { get; }
+    }
 
-        [Inject] private IMoleSpawnablePresenter MoleSpawnablePresenter { get; }
-
-        public void Attacked()
-        {
-            GameStateModel.Score.Value++;
-        }
+    public class MoleUseCase : IMoleUseCase
+    {
+        // XXX: コンストラクタ引数でも良いかも
+        [Inject] private MolePresenter.Factory MolePresenterFactory { get; }
+//        private IMolePresenter MolePresenter { get; }
 
         public void Foo()
         {
-            UnityEngine.Debug.Log("Foo");
+            Debug.Log("Foo");
         }
 
-        void IInitializable.Initialize()
+        [Inject]
+        public void Initialize(IMoleEntity moleEntity)
         {
-            UnityEngine.Debug.Log("MoleUseCase.Initialize()");
-            MoleSpawnablePresenter.SpawnMoles();
+            Debug.Log("MoleUseCase.ctor()");
+            MolePresenterFactory.Create(moleEntity);
+            Debug.Log($"MoleUseCase.Initialize(): {moleEntity.Index}");
+            var nextActionMap = new[]
+            {
+                new KeyValuePair<string, Action>(Constant.Animator.AnimationStateName.Show, moleEntity.Show),
+                new KeyValuePair<string, Action>(Constant.Animator.AnimationStateName.Feint, moleEntity.Feint),
+            };
+            moleEntity
+                .DidActiveSubject
+                .Delay(TimeSpan.FromSeconds(Constant.MoleActiveDuration))
+                .Where(_ => moleEntity.IsActive?.Invoke() ?? false)
+                .Subscribe(_ => moleEntity.Hide?.Invoke());
+            moleEntity
+                .DidInactiveSubject
+                .SelectMany(_ => Observable.Timer(TimeSpan.FromSeconds(Random.Range(Constant.MoleInactiveDurationFrom, Constant.MoleInactiveDurationTo))))
+                .Select(_ => nextActionMap.Random())
+                .Subscribe(x => x.Value?.Invoke());
         }
 
-        public MoleUseCase()
+        public class Factory : PlaceholderFactory<IMoleEntity, IMoleUseCase>
         {
-            UnityEngine.Debug.Log("MoleUseCase.ctor()");
         }
     }
 }

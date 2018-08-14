@@ -1,7 +1,7 @@
 using System;
 using CAFU.Core.Domain.UseCase;
 using Monry.CAFUSample.Application;
-using Monry.CAFUSample.Domain.Model;
+using Monry.CAFUSample.Entity;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -10,7 +10,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public class GameStateUseCase : IUseCase, IInitializable
     {
-        [Inject] private IGameStateModel GameStateModel { get; }
+        [Inject] private IGameStateEntity GameStateModel { get; }
 
         [Inject] private IGameScoreRenderablePresenter GameScoreRenderablePresenter { get; }
 

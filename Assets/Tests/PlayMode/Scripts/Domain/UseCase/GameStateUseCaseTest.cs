@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Monry.CAFUSample.Domain.Model;
+using Monry.CAFUSample.Entity;
 using Moq;
 using NUnit.Framework;
 using UniRx;
@@ -13,7 +13,7 @@ namespace Monry.CAFUSample.Domain.UseCase
         [SetUp]
         public void SetUp()
         {
-            Container.Bind<IGameStateModel>().FromMock();
+            Container.Bind<IGameStateEntity>().FromMock();
             Container.Bind<IGameScoreRenderablePresenter>().FromMock();
             Container.Bind<GameStateUseCase>().AsTransient();
         }
@@ -22,10 +22,10 @@ namespace Monry.CAFUSample.Domain.UseCase
         public IEnumerator ResetScoreTest()
         {
             var rp = new IntReactiveProperty();
-            var mock = new Mock<IGameStateModel>();
+            var mock = new Mock<IGameStateEntity>();
             mock.Setup(x => x.Score).Returns(rp);
 
-            Container.Rebind<IGameStateModel>().FromInstance(mock.Object);
+            Container.Rebind<IGameStateEntity>().FromInstance(mock.Object);
 
             var useCase = Container.Resolve<GameStateUseCase>();
 
