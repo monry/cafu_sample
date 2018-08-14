@@ -14,10 +14,6 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         [Inject] private IGameScoreRenderablePresenter GameScoreRenderablePresenter { get; }
 
-        [Inject] private IGameFinishNotifyablePresenter GameFinishNotifyablePresenter { get; }
-
-        [Inject] private IGameStateHandlerPresenter GameStateHandlerPresenter { get; }
-
         private IDisposable GameTimerSubscription { get; set; }
 
         void IInitializable.Initialize()
@@ -35,11 +31,7 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameStateEntity.WillStopSubject.Subscribe(_ => StopGame());
             GameStateEntity.WillPauseSubject.Subscribe(_ => PauseGame());
             GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
-        }
-
-        public GameStateUseCase()
-        {
-            Debug.Log("GameStateUseCase.ctor()");
+            GameStateEntity.WillFinishSubject.Subscribe(_ => FinishGame());
         }
 
         public void ResetScore()
@@ -69,12 +61,17 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameTimerSubscription?.Dispose();
             GameStateEntity.RemainingTime.Value = 0.0f;
 
-            GameFinishNotifyablePresenter.OnGameFinished();
+            GameStateEntity.WillFinishSubject.OnNext(Unit.Default);
         }
 
         private void PauseGame()
         {
             GameTimerSubscription?.Dispose();
+        }
+
+        private void FinishGame()
+        {
+            Debug.Log("Finish!!!");
         }
     }
 }

@@ -10,21 +10,17 @@ namespace Presentation.Presenter.Interface
 
     public interface IGameStateStartHandlerView : IGameStateHandlerView
     {
-        IObservable<Unit> OnGameStartAsObservable();
     }
 
     public interface IGameStateStopHandlerView : IGameStateHandlerView
     {
-        IObservable<Unit> OnGameStopAsObservable();
     }
 
     public interface IGameStateResumeHandlerView : IGameStateHandlerView
     {
-        IObservable<Unit> OnGameResumeAsObservable();
     }
 
     public interface IGameStatePauseHandlerView : IGameStateHandlerView
     {
-        IObservable<Unit> OnGamePauseAsObservable();
     }
 }

@@ -4,7 +4,6 @@ using ExtraLinq;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Entity;
 using UniRx;
-using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -17,6 +16,8 @@ namespace Monry.CAFUSample.Domain.UseCase
     public class MoleUseCase : IMoleUseCase
     {
         [Inject] private PlaceholderFactory<IMoleEntity, IMolePresenter> MolePresenterFactory { get; }
+
+        [Inject] private IGameStateEntity GameStateEntity { get; }
 
         [Inject]
         public void Initialize(IMoleEntity moleEntity)
@@ -34,8 +35,10 @@ namespace Monry.CAFUSample.Domain.UseCase
                 .Subscribe(_ => moleEntity.Hide?.Invoke());
             moleEntity
                 .DidInactiveSubject
+                .Merge(GameStateEntity.WillStartSubject)
                 .SelectMany(_ => Observable.Timer(TimeSpan.FromSeconds(Random.Range(Constant.MoleInactiveDurationFrom, Constant.MoleInactiveDurationTo))))
                 .Select(_ => nextActionMap.Random())
+                .TakeUntil(GameStateEntity.WillFinishSubject)
                 .Subscribe(x => x.Value?.Invoke());
         }
     }

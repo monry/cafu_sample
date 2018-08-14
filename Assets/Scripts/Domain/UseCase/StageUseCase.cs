@@ -1,7 +1,6 @@
 using CAFU.Core.Domain.UseCase;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Entity;
-using UnityEngine;
 using Zenject;
 
 namespace Monry.CAFUSample.Domain.UseCase
