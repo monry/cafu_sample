@@ -18,6 +18,12 @@
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
+"@umm/extra_linq@umm/extra_linq#^1.0.0":
+  version "1.2.1"
+  resolved "https://codeload.github.com/umm/extra_linq/tar.gz/95da91186d202ceb246b093edea2c0a8d5fdf512"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
 "@umm/moq@umm/moq#^1.0.0":
   version "1.0.0"
   resolved "https://codeload.github.com/umm/moq/tar.gz/5c3b47795a773b637a98e13c534236fb927a5bda"
