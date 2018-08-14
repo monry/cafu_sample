@@ -13,9 +13,6 @@ namespace Monry.CAFUSample.Presentation.Presenter
         IGameScoreRenderablePresenter,
         IGameStateHandlerPresenter
     {
-        // XXX: ココ、Factory Pattern にできないか検討する
-        [Inject] private DiContainer Container { get; }
-
         [Inject] private IScoreView ScoreView { get; }
 
         [Inject] private IGameStateStartHandlerView GameStateStartHandlerView { get; }

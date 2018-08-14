@@ -1,6 +1,5 @@
 using System;
 using UniRx;
-using Zenject;
 
 namespace Monry.CAFUSample.Entity
 {
@@ -34,10 +33,6 @@ namespace Monry.CAFUSample.Entity
         public MoleEntity(int index)
         {
             Index = index;
-        }
-
-        public class Factory : PlaceholderFactory<int, IMoleEntity>
-        {
         }
     }
 }

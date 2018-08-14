@@ -10,7 +10,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public class GameStateUseCase : IUseCase, IInitializable
     {
-        [Inject] private IGameStateEntity GameStateModel { get; }
+        [Inject] private IGameStateEntity GameStateEntity { get; }
 
         [Inject] private IGameScoreRenderablePresenter GameScoreRenderablePresenter { get; }
 
@@ -23,19 +23,18 @@ namespace Monry.CAFUSample.Domain.UseCase
         void IInitializable.Initialize()
         {
             Debug.Log("GameStateUseCase.Initialize()");
-            GameStateModel
+            GameStateEntity
                 .Score
                 .Subscribe(GameScoreRenderablePresenter.RenderScore);
-            GameStateModel
+            GameStateEntity
                 .RemainingTime
                 .Where(x => x < 0.0f)
                 .First()
                 .Subscribe(_ => StopGame());
-
-            GameStateHandlerPresenter.OnStartAsObservable().Subscribe(_ => StartGame());
-            GameStateHandlerPresenter.OnStopAsObservable().Subscribe(_ => StopGame());
-            GameStateHandlerPresenter.OnResumeAsObservable().Subscribe(_ => ResumeGame());
-            GameStateHandlerPresenter.OnPauseAsObservable().Subscribe(_ => PauseGame());
+            GameStateEntity.WillStartSubject.Subscribe(_ => StartGame());
+            GameStateEntity.WillStopSubject.Subscribe(_ => StopGame());
+            GameStateEntity.WillPauseSubject.Subscribe(_ => PauseGame());
+            GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
         }
 
         public GameStateUseCase()
@@ -45,15 +44,15 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         public void ResetScore()
         {
-            GameStateModel.Score.Value = 0;
+            GameStateEntity.Score.Value = 0;
         }
 
         private void StartGame()
         {
-            GameStateModel.RemainingTime.Value = Constant.RemainingTime;
+            GameStateEntity.RemainingTime.Value = Constant.RemainingTime;
             GameTimerSubscription = Observable
                 .EveryUpdate()
-                .Subscribe(_ => GameStateModel.RemainingTime.Value -= Time.deltaTime);
+                .Subscribe(_ => GameStateEntity.RemainingTime.Value -= Time.deltaTime);
 
             Debug.Log("StartGame");
         }
@@ -62,13 +61,13 @@ namespace Monry.CAFUSample.Domain.UseCase
         {
             GameTimerSubscription = Observable
                 .EveryUpdate()
-                .Subscribe(_ => GameStateModel.RemainingTime.Value -= Time.deltaTime);
+                .Subscribe(_ => GameStateEntity.RemainingTime.Value -= Time.deltaTime);
         }
 
         private void StopGame()
         {
             GameTimerSubscription?.Dispose();
-            GameStateModel.RemainingTime.Value = 0.0f;
+            GameStateEntity.RemainingTime.Value = 0.0f;
 
             GameFinishNotifyablePresenter.OnGameFinished();
         }

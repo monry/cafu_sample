@@ -62,18 +62,12 @@ namespace Monry.CAFUSample.Presentation.View.Game
         protected override void Start()
         {
             base.Start();
-            Debug.Log(Animator);
-            Debug.Log(MoleEntity.Index);
             // Inactive を通知し、次の処理を呼び出すストリームを発火
             MoleEntity.DidInactiveSubject.OnNext(Unit.Default);
 
             MoleEntity.DidActiveSubject.Subscribe(_ => Collider2D.enabled = true);
             MoleEntity.WillInactiveSubject.Subscribe(_ => Collider2D.enabled = false);
             this.OnPointerDownAsObservable().AsUnitObservable().Subscribe(_ => MoleEntity.Hit());
-        }
-
-        public class Factory : PlaceholderFactory<IMoleEntity, Mole>
-        {
         }
     }
 }
