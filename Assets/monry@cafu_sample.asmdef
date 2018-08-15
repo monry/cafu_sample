@@ -3,10 +3,10 @@
     "references": [
         "umm@animationevent_dispatcher",
         "umm@cafu_core",
-        "umm@unirx",
+        "umm@extra_linq",
         "umm@extra_zenject",
-        "Zenject",
-        "umm@extra_linq"
+        "umm@unirx",
+        "Zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
