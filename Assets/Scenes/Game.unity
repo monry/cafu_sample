@@ -158,6 +158,7 @@ MonoBehaviour:
   molePrefab: {fileID: 114364935191383186, guid: 00b5a17063b9440c7810b434696a5173,
     type: 2}
   moleParent: {fileID: 1180977520}
+  controller: {fileID: 253547730}
 --- !u!114 &253547729
 MonoBehaviour:
   m_ObjectHideFlags: 0
