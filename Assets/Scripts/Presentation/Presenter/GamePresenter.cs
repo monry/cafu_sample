@@ -1,8 +1,7 @@
 using Monry.CAFUSample.UseCase;
-using Monry.CAFUSample.Presenter.Interface;
 using Zenject;
 
-namespace Monry.CAFUSample.Presenter
+namespace Monry.CAFUSample.Presentation.Presenter
 {
     public class GamePresenter :
         IGameScoreRenderablePresenter

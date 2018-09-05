@@ -1,11 +1,11 @@
 using System;
 using Monry.CAFUSample.Entity;
-using Monry.CAFUSample.Presenter.Interface;
+using Monry.CAFUSample.Presentation.Presenter;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.View.Game
+namespace Monry.CAFUSample.Presentation.View.Game
 {
     public class Controller : MonoBehaviour,
         IGameStateStartHandlerView

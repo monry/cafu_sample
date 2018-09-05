@@ -2,7 +2,7 @@
     "name": "monry@cafu_sample-Tests-EditMode",
     "references": [
         "monry@cafu_sample",
-        "umm@cafu_core",
+        "umm@cafu_core@v3",
         "umm@unirx",
         "Zenject",
         "Zenject-Editor-Testing",

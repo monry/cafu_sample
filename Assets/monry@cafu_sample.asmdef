@@ -2,7 +2,7 @@
     "name": "monry@cafu_sample",
     "references": [
         "umm@animationevent_dispatcher",
-        "umm@cafu_core",
+        "umm@cafu_core@v3",
         "umm@extra_linq",
         "umm@extra_zenject",
         "umm@unirx",

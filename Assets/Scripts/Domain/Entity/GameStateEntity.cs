@@ -1,9 +1,10 @@
+using CAFU.Core;
 using Monry.CAFUSample.Application;
 using UniRx;
 
 namespace Monry.CAFUSample.Entity
 {
-    public interface IGameStateEntity
+    public interface IGameStateEntity : IEntity
     {
         IReactiveProperty<int> Score { get; }
         IReactiveProperty<float> RemainingTime { get; }

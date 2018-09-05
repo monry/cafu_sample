@@ -1,7 +1,7 @@
-using Monry.CAFUSample.UseCase;
 using Monry.CAFUSample.Entity;
-using Monry.CAFUSample.Presenter;
-using Monry.CAFUSample.Presenter.Interface;
+using Monry.CAFUSample.Presentation.Presenter;
+using Monry.CAFUSample.Presentation.View.Game;
+using Monry.CAFUSample.UseCase;
 using Monry.CAFUSample.View.Game;
 using UnityEngine;
 using Zenject;
@@ -19,25 +19,29 @@ namespace Monry.CAFUSample.Application.Installer
         [SerializeField] private Controller controller;
         private Controller Controller => controller;
 
+        [SerializeField] private Score score;
+        private Score Score => score;
+
         public override void InstallBindings()
         {
             // Entities
-            Container.BindFactory<int, IMoleEntity, PlaceholderFactory<int, IMoleEntity>>().To<MoleEntity>();
             Container.Bind<IGameStateEntity>().To<GameStateEntity>().AsCached();
+            // MoleEntity は Factory 経由で生成
+            Container.BindFactory<int, IMoleEntity, PlaceholderFactory<int, IMoleEntity>>().To<MoleEntity>();
 
             // UseCases
-            Container.BindInterfacesAndSelfTo<StageUseCase>().AsCached();
-            Container.BindInterfacesAndSelfTo<GameStateUseCase>().AsCached();
-            Container.BindFactory<IMoleEntity, IMoleUseCase, PlaceholderFactory<IMoleEntity, IMoleUseCase>>().To<MoleUseCase>();
+            Container.BindInterfacesTo<StageUseCase>().AsCached();
+            Container.BindInterfacesTo<GameStateUseCase>().AsCached();
+            Container.BindInterfacesTo<MoleUseCase>().AsCached();
 
             // Presenters
-            Container.BindInterfacesAndSelfTo<GamePresenter>().AsCached();
-            Container.BindFactory<IMoleEntity, IMolePresenter, PlaceholderFactory<IMoleEntity, IMolePresenter>>().To<MolePresenter>();
+            Container.BindInterfacesTo<GamePresenter>().AsCached();
+            Container.BindInterfacesTo<MolePresenter>().AsCached();
 
             // Views
-            Container.BindInterfacesAndSelfTo<Controller>().FromInstance(Controller).AsCached();
-            Container.Bind<IScoreView>().To<Score>().FromComponentInHierarchy().AsCached();
-            Container.BindFactory<IMoleEntity, Mole, PlaceholderFactory<IMoleEntity, Mole>>().FromComponentInNewPrefab(MolePrefab).UnderTransform(MoleParent);
+            Container.BindInterfacesTo<Controller>().FromInstance(Controller).AsCached();
+            Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();
+            Container.BindFactory<int, IMoleView, PlaceholderFactory<int, IMoleView>>().To<Mole>().FromComponentInNewPrefab(MolePrefab).UnderTransform(MoleParent);
         }
     }
 }

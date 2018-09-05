@@ -10,13 +10,13 @@
     "@umm/singleton_audiolistener" umm/singleton_audiolistener#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
 
-"@umm/cafu_core@umm/cafu_core#^2.0.0":
-  version "2.7.2"
-  resolved "https://codeload.github.com/umm/cafu_core/tar.gz/efc0aee5158f42ef68fb978f7e9b61d676cf8678"
+"@umm/cafu_core@../../umm/cafu_core":
+  version "2.7.3"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
+    "@umm/zenject" umm/zenject#^2.0.0
 
 "@umm/extra_linq@umm/extra_linq#^1.0.0":
   version "1.2.1"

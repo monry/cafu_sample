@@ -1,6 +1,6 @@
 using CAFU.Core;
 
-namespace Monry.CAFUSample.Presenter.Interface
+namespace Monry.CAFUSample.Presentation.Presenter
 {
     public interface IScoreView : IView
     {

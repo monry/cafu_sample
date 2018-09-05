@@ -1,7 +1,7 @@
 using CAFU.Core;
 using UnityEngine;
 
-namespace Monry.CAFUSample.Presenter
+namespace Monry.CAFUSample.Presentation.Presenter
 {
     public interface IAnimatorView : IView
     {

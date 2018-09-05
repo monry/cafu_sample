@@ -3,7 +3,7 @@ using Monry.CAFUSample.Application;
 using UniRx;
 using UnityModule.AnimationEventDispatcher;
 
-namespace Monry.CAFUSample.Presenter.Interfaces
+namespace Monry.CAFUSample.Presentation.Presenter
 {
     public interface IVisibilityAnimatorView : IAnimatorView
     {

@@ -1,4 +1,4 @@
-using Monry.CAFUSample.Presenter.Interface;
+using Monry.CAFUSample.Presentation.Presenter;
 using UnityEngine;
 using UnityEngine.UI;
 
