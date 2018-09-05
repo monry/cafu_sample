@@ -24,7 +24,7 @@ namespace Monry.CAFUSample.Entity
         void Finish();
     }
 
-    public class MoleEntity : IMoleEntity, IInitializable
+    public class MoleEntity : IMoleEntity
     {
         private static readonly Dictionary<string, Action<IMoleEntity>> NextActionMap = new Dictionary<string, Action<IMoleEntity>>
         {
@@ -61,6 +61,7 @@ namespace Monry.CAFUSample.Entity
             Index = index;
         }
 
+        [Inject]
         public void Initialize()
         {
             DidActiveSubject
