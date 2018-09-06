@@ -2,7 +2,7 @@ using CAFU.Core;
 using Monry.CAFUSample.Entity;
 using Zenject;
 
-namespace Monry.CAFUSample.UseCase
+namespace Monry.CAFUSample.Domain.UseCase
 {
     public class StageUseCase : IUseCase
     {

@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
-using Monry.CAFUSample.UseCase;
-using UniRx;
+using Monry.CAFUSample.Domain.Structure;
+using Monry.CAFUSample.Domain.UseCase;
 using Zenject;
 
 namespace Monry.CAFUSample.Presentation.Presenter
@@ -17,84 +16,19 @@ namespace Monry.CAFUSample.Presentation.Presenter
             MoleViewList.Add(MoleViewFactory.Create(index));
         }
 
-        public void Show(int index)
+        public IMoleStateStructure GenerateStateStructure(int index)
         {
-            MoleViewList[index].Show();
+            return MoleViewList[index].GenerateStateStructure();
         }
 
-        public void Hide(int index)
+        public IMoleActivationStructure GenerateActivationStructure(int index)
         {
-            MoleViewList[index].Hide();
+            return MoleViewList[index].GenerateActivationStructure();
         }
 
-        public void Feint(int index)
+        public IMoleAttackStructure GenerateAttackStructure(int index)
         {
-            MoleViewList[index].Feint();
-        }
-
-        public void Hit(int index)
-        {
-            MoleViewList[index].Hit();
-        }
-
-        public bool CanAttack(int index)
-        {
-            return MoleViewList[index].CanAttack();
-        }
-
-        public void Activate(int index)
-        {
-            MoleViewList[index].Activate();
-        }
-
-        public void Deactivate(int index)
-        {
-            MoleViewList[index].Deactivate();
-        }
-
-        public IObservable<Unit> AttackAsObservable(int index)
-        {
-            return MoleViewList[index].AttackAsObservable();
-        }
-
-        public IObservable<Unit> WillShowAsObservable(int index)
-        {
-            return MoleViewList[index].WillShowAsObservable();
-        }
-
-        public IObservable<Unit> WillHideAsObservable(int index)
-        {
-            return MoleViewList[index].WillHideAsObservable();
-        }
-
-        public IObservable<Unit> WillFeintAsObservable(int index)
-        {
-            return MoleViewList[index].WillFeintAsObservable();
-        }
-
-        public IObservable<Unit> WillHitAsObservable(int index)
-        {
-            return MoleViewList[index].WillHitAsObservable();
-        }
-
-        public IObservable<Unit> DidShowAsObservable(int index)
-        {
-            return MoleViewList[index].DidShowAsObservable();
-        }
-
-        public IObservable<Unit> DidHideAsObservable(int index)
-        {
-            return MoleViewList[index].DidHideAsObservable();
-        }
-
-        public IObservable<Unit> DidFeintAsObservable(int index)
-        {
-            return MoleViewList[index].DidFeintAsObservable();
-        }
-
-        public IObservable<Unit> DidHitAsObservable(int index)
-        {
-            return MoleViewList[index].DidHitAsObservable();
+            return MoleViewList[index].GenerateAttackStructure();
         }
     }
 }

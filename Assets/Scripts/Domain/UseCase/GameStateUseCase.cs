@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.UseCase
+namespace Monry.CAFUSample.Domain.UseCase
 {
     public class GameStateUseCase : IUseCase, IInitializable
     {

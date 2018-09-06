@@ -1,4 +1,4 @@
-using Monry.CAFUSample.UseCase;
+using Monry.CAFUSample.Domain.UseCase;
 using Zenject;
 
 namespace Monry.CAFUSample.Presentation.Presenter

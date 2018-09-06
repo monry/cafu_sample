@@ -1,23 +1,12 @@
-using System;
-using UniRx;
+using CAFU.Core;
+using Monry.CAFUSample.Domain.Structure;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public interface IMoleView : IActivationHandlableView
+    public interface IMoleView : IView
     {
-        void Show();
-        void Hide();
-        void Feint();
-        void Hit();
-        bool CanAttack();
-        IObservable<Unit> AttackAsObservable();
-        IObservable<Unit> WillShowAsObservable();
-        IObservable<Unit> WillHideAsObservable();
-        IObservable<Unit> WillFeintAsObservable();
-        IObservable<Unit> WillHitAsObservable();
-        IObservable<Unit> DidShowAsObservable();
-        IObservable<Unit> DidHideAsObservable();
-        IObservable<Unit> DidFeintAsObservable();
-        IObservable<Unit> DidHitAsObservable();
+        IMoleStateStructure GenerateStateStructure();
+        IMoleActivationStructure GenerateActivationStructure();
+        IMoleAttackStructure GenerateAttackStructure();
     }
 }

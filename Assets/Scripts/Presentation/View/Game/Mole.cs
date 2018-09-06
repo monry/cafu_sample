@@ -1,4 +1,5 @@
 using System;
+using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Presentation.Presenter;
 using UniRx;
@@ -43,84 +44,41 @@ namespace Monry.CAFUSample.Presentation.View.Game
             transform.localPosition = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(-4.5f, 4.5f), 0.0f);
         }
 
-        public void Show()
+        public IMoleStateStructure GenerateStateStructure()
         {
-            Animator.SetTrigger(Constant.Animator.TriggerName.Show);
+            return new MoleStateStructure
+            {
+                Show = () => Animator.SetTrigger(Constant.Animator.TriggerName.Show),
+                Hide = () => Animator.SetTrigger(Constant.Animator.TriggerName.Hide),
+                Feint = () => Animator.SetTrigger(Constant.Animator.TriggerName.Feint),
+                Hit = () => Animator.SetTrigger(Constant.Animator.TriggerName.Hit),
+                WillShowObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable(),
+                WillHideObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable(),
+                WillFeintObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable(),
+                WillHitObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable(),
+                DidShowObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable(),
+                DidHideObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable(),
+                DidFeintObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable(),
+                DidHitObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable(),
+            };
         }
 
-        public void Hide()
+        public IMoleActivationStructure GenerateActivationStructure()
         {
-            Animator.SetTrigger(Constant.Animator.TriggerName.Hide);
+            return new MoleActivationStructure
+            {
+                Activate = () => Collider2D.enabled = true,
+                Deactivate = () => Collider2D.enabled = false,
+            };
         }
 
-        public void Feint()
+        public IMoleAttackStructure GenerateAttackStructure()
         {
-            Animator.SetTrigger(Constant.Animator.TriggerName.Feint);
-        }
-
-        public void Hit()
-        {
-            Animator.SetTrigger(Constant.Animator.TriggerName.Hit);
-        }
-
-        public bool CanAttack()
-        {
-            return Collider2D.enabled;
-        }
-
-        public IObservable<Unit> AttackAsObservable()
-        {
-            return this.OnPointerDownAsObservable().AsUnitObservable();
-        }
-
-        public IObservable<Unit> WillShowAsObservable()
-        {
-            return Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable();
-        }
-
-        public IObservable<Unit> WillHideAsObservable()
-        {
-            return Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable();
-        }
-
-        public IObservable<Unit> WillFeintAsObservable()
-        {
-            return Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable();
-        }
-
-        public IObservable<Unit> WillHitAsObservable()
-        {
-            return Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable();
-        }
-
-        public IObservable<Unit> DidShowAsObservable()
-        {
-            return Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable();
-        }
-
-        public IObservable<Unit> DidHideAsObservable()
-        {
-            return Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable();
-        }
-
-        public IObservable<Unit> DidFeintAsObservable()
-        {
-            return Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable();
-        }
-
-        public IObservable<Unit> DidHitAsObservable()
-        {
-            return Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable();
-        }
-
-        public void Activate()
-        {
-            Collider2D.enabled = true;
-        }
-
-        public void Deactivate()
-        {
-            Collider2D.enabled = false;
+            return new MoleAttackStructure
+            {
+                CanAttack = () => Collider2D.enabled,
+                AttackObservable = this.OnPointerDownAsObservable().AsUnitObservable(),
+            };
         }
     }
 }

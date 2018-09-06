@@ -1,7 +1,7 @@
 using Monry.CAFUSample.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.Game;
-using Monry.CAFUSample.UseCase;
+using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.View.Game;
 using UnityEngine;
 using Zenject;

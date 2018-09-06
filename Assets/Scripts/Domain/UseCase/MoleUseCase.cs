@@ -3,7 +3,7 @@ using Monry.CAFUSample.Entity;
 using UniRx;
 using Zenject;
 
-namespace Monry.CAFUSample.UseCase
+namespace Monry.CAFUSample.Domain.UseCase
 {
     public interface IMoleUseCase
     {
@@ -34,29 +34,33 @@ namespace Monry.CAFUSample.UseCase
             GameStateEntity.WillStartSubject.Subscribe(_ => moleEntity.Start());
             GameStateEntity.WillFinishSubject.Subscribe(_ => moleEntity.Finish());
 
+            var moleStateStructure = MolePresenter.GenerateStateStructure(moleEntity.Index);
+            var moleActivationStructure = MolePresenter.GenerateActivationStructure(moleEntity.Index);
+            var moleAttackStructure = MolePresenter.GenerateAttackStructure(moleEntity.Index);
+
             // 処理実行の処理を登録
-            moleEntity.Show = () => MolePresenter.Show(moleEntity.Index);
-            moleEntity.Hide = () => MolePresenter.Hide(moleEntity.Index);
-            moleEntity.Feint = () => MolePresenter.Feint(moleEntity.Index);
-            moleEntity.Hit = () => MolePresenter.Hit(moleEntity.Index);
-            moleEntity.CanAttack = () => MolePresenter.CanAttack(moleEntity.Index);
+            moleEntity.Show = () => moleStateStructure.Show();
+            moleEntity.Hide = () => moleStateStructure.Hide();
+            moleEntity.Feint = () => moleStateStructure.Feint();
+            moleEntity.Hit = () => moleStateStructure.Hit();
+            moleEntity.CanAttack = () => moleAttackStructure.CanAttack();
 
             // 有効無効切り替え時の処理を登録
-            moleEntity.DidActiveSubject.Subscribe(_ => MolePresenter.Activate(moleEntity.Index));
-            moleEntity.WillInactiveSubject.Subscribe(_ => MolePresenter.Deactivate(moleEntity.Index));
+            moleEntity.DidActiveSubject.Subscribe(_ => moleActivationStructure.Activate());
+            moleEntity.WillInactiveSubject.Subscribe(_ => moleActivationStructure.Deactivate());
 
             // アニメーション後の処理を登録
-            MolePresenter.WillShowAsObservable(moleEntity.Index).Subscribe(moleEntity.WillActiveSubject);
-            MolePresenter.WillHideAsObservable(moleEntity.Index).Subscribe(moleEntity.WillInactiveSubject);
-            MolePresenter.WillFeintAsObservable(moleEntity.Index).Subscribe(moleEntity.WillInactiveSubject);
-            MolePresenter.WillHitAsObservable(moleEntity.Index).Subscribe(moleEntity.WillInactiveSubject);
-            MolePresenter.DidShowAsObservable(moleEntity.Index).Subscribe(moleEntity.DidActiveSubject);
-            MolePresenter.DidHideAsObservable(moleEntity.Index).Subscribe(moleEntity.DidInactiveSubject);
-            MolePresenter.DidFeintAsObservable(moleEntity.Index).Subscribe(moleEntity.DidInactiveSubject);
-            MolePresenter.DidHitAsObservable(moleEntity.Index).Subscribe(); // 即時 Hide に流れるので何もしない
+            moleStateStructure.WillShowObservable.Subscribe(moleEntity.WillActiveSubject);
+            moleStateStructure.WillHideObservable.Subscribe(moleEntity.WillInactiveSubject);
+            moleStateStructure.WillFeintObservable.Subscribe(moleEntity.WillInactiveSubject);
+            moleStateStructure.WillHitObservable.Subscribe(moleEntity.WillInactiveSubject);
+            moleStateStructure.DidShowObservable.Subscribe(moleEntity.DidActiveSubject);
+            moleStateStructure.DidHideObservable.Subscribe(moleEntity.DidInactiveSubject);
+            moleStateStructure.DidFeintObservable.Subscribe(moleEntity.DidInactiveSubject);
+            moleStateStructure.DidHitObservable.Subscribe(); // 即時 Hide に流れるので何もしない
 
             // 攻撃時の処理を登録
-            MolePresenter.AttackAsObservable(moleEntity.Index).Subscribe(_ => moleEntity.Hit());
+            moleAttackStructure.AttackObservable.Subscribe(_ => moleEntity.Hit());
         }
     }
 }

@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine.TestTools;
 using Zenject;
 
-namespace Monry.CAFUSample.UseCase
+namespace Monry.CAFUSample.Domain.UseCase
 {
     public class GameStateUseCaseTest : ZenjectUnitTestFixture
     {
