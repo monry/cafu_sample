@@ -41,7 +41,15 @@ namespace Monry.CAFUSample.Application.Installer
             // Views
             Container.BindInterfacesTo<Controller>().FromInstance(Controller).AsCached();
             Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();
-            Container.BindFactory<int, IMoleView, PlaceholderFactory<int, IMoleView>>().To<Mole>().FromComponentInNewPrefab(MolePrefab).UnderTransform(MoleParent);
+            Container
+                // IMoleView は PlaceholderFactory を用いて生成
+                .BindFactory<int, IMoleView, PlaceholderFactory<int, IMoleView>>()
+                // Mole 型として
+                .To<Mole>()
+                // MolePrefab 内のコンポーネントを用いて
+                .FromComponentInNewPrefab(MolePrefab)
+                // MoleParent の配下に
+                .UnderTransform(MoleParent);
         }
     }
 }
