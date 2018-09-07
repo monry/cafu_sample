@@ -24,11 +24,11 @@ namespace Monry.CAFUSample.Application.Installer
         {
             // Entities
             Container.Bind<IGameStateEntity>().To<GameStateEntity>().AsCached();
+            Container.BindInterfacesTo<ScoreEntity>().AsCached();
             // MoleEntity は Factory 経由で生成
             Container.BindIFactory<int, IMoleEntity>().To<MoleEntity>();
 
             // UseCases
-            Container.BindInterfacesTo<StageUseCase>().AsCached();
             Container.BindInterfacesTo<GameStateUseCase>().AsCached();
             Container.BindInterfacesTo<MoleUseCase>().AsCached();
 

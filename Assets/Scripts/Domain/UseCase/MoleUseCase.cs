@@ -17,9 +17,13 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         [Inject] private IGameStateEntity GameStateEntity { get; }
 
+        [Inject] private IScoreEntity ScoreEntity { get; }
+
+        [InjectOptional(Id = Constant.InjectId.MoleAmount)] private int MoleAmount { get; } = Constant.MoleAmount;
+
         public void Initialize()
         {
-            for (var i = 0; i < Constant.MoleAmount; i++)
+            for (var i = 0; i < MoleAmount; i++)
             {
                 InitializeMole(MoleEntityFactory.Create(i));
             }
@@ -61,6 +65,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 
             // 攻撃時の処理を登録
             moleAttackStructure.AttackObservable.Subscribe(_ => moleEntity.Hit());
+            moleAttackStructure.AttackObservable.Subscribe(_ => ScoreEntity.Increment());
         }
     }
 }

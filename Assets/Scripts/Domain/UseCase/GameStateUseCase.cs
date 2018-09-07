@@ -8,8 +8,14 @@ using Zenject;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public class GameStateUseCase : IUseCase, IInitializable
+    public interface IGameStateUseCase : IUseCase
     {
+    }
+
+    public class GameStateUseCase : IGameStateUseCase, IInitializable
+    {
+        [Inject] private IScoreEntity ScoreEntity { get; }
+
         [Inject] private IGameStateEntity GameStateEntity { get; }
 
         [Inject] private IGameScoreRenderablePresenter GameScoreRenderablePresenter { get; }
@@ -18,8 +24,8 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         void IInitializable.Initialize()
         {
-            GameStateEntity
-                .Score
+            ScoreEntity
+                .Current
                 .Subscribe(GameScoreRenderablePresenter.RenderScore);
             GameStateEntity
                 .RemainingTime
@@ -31,11 +37,6 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameStateEntity.WillPauseSubject.Subscribe(_ => PauseGame());
             GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
             GameStateEntity.WillFinishSubject.Subscribe(_ => FinishGame());
-        }
-
-        public void ResetScore()
-        {
-            GameStateEntity.Score.Value = 0;
         }
 
         private void StartGame()
