@@ -1,10 +1,9 @@
-using Monry.CAFUSample.Application;
-using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Domain.UseCase;
 using NUnit.Framework;
+using UniRx;
 using Zenject;
 
-namespace Tests.EditMode.Scripts.Domain.Entity
+namespace Monry.CAFUSample.Domain.Entity
 {
     public class ScoreEntityTest : ZenjectUnitTestFixture
     {
@@ -13,26 +12,27 @@ namespace Tests.EditMode.Scripts.Domain.Entity
         {
             base.Setup();
 
-            Container.BindInstance(0).WithId(Constant.InjectId.MoleAmount);
-
-            Container.BindIFactory<int, IMoleEntity>().To<MoleEntity>();
             Container.BindInterfacesTo<GameStateEntity>().AsCached();
             Container.BindInterfacesTo<ScoreEntity>().AsCached();
 
-            Container.Bind<IMolePresenter>().FromMock();
-            // IInitializable は Bind しない
-            Container.Bind<MoleUseCase>().AsCached();
+            Container.Bind<IGameScoreRenderablePresenter>().FromMock();
+            Container.BindInterfacesAndSelfTo<GameStateUseCase>().AsCached();
         }
 
-        // InitializeMole 内で閉じすぎているのでテスト難しい…
-        // Attack を Entity に切り出せればワンチャンあり
-//        [Test]
-//        public void IncrementTest()
-//        {
-//            var gameStateEntity = Container.Resolve<IGameStateEntity>();
-//            var scoreEntity = Container.Resolve<IScoreEntity>();
-//
-//            Assert.AreEqual(0, scoreEntity.Current.Value);
-//        }
+        [Test]
+        public void IncrementTest()
+        {
+            // EditMode Tests から IInitializable.Initialize() は呼ばれない？
+            (Container.Resolve<GameStateUseCase>() as IInitializable).Initialize();
+
+            var gameStateEntity = Container.Resolve<IGameStateEntity>();
+            var scoreEntity = Container.Resolve<IScoreEntity>();
+
+            Assert.AreEqual(0, scoreEntity.Current.Value);
+            gameStateEntity.WillAttackSubject.OnNext(Unit.Default);
+            Assert.AreEqual(1, scoreEntity.Current.Value);
+            gameStateEntity.WillAttackSubject.OnNext(Unit.Default);
+            Assert.AreEqual(2, scoreEntity.Current.Value);
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 
             // 攻撃時の処理を登録
             moleAttackStructure.AttackObservable.Subscribe(_ => moleEntity.Hit());
-            moleAttackStructure.AttackObservable.Subscribe(_ => ScoreEntity.Increment());
+            moleAttackStructure.AttackObservable.Subscribe(GameStateEntity.WillAttackSubject);
         }
     }
 }

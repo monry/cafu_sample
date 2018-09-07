@@ -37,6 +37,7 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameStateEntity.WillPauseSubject.Subscribe(_ => PauseGame());
             GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
             GameStateEntity.WillFinishSubject.Subscribe(_ => FinishGame());
+            GameStateEntity.WillAttackSubject.Subscribe(_ => ScoreEntity.Increment());
         }
 
         private void StartGame()

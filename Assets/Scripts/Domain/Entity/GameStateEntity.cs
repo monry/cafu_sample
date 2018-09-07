@@ -12,6 +12,7 @@ namespace Monry.CAFUSample.Domain.Entity
         ISubject<Unit> WillPauseSubject { get; }
         ISubject<Unit> WillResumeSubject { get; }
         ISubject<Unit> WillFinishSubject { get; }
+        ISubject<Unit> WillAttackSubject { get; }
     }
 
     public class GameStateEntity : IGameStateEntity
@@ -22,5 +23,6 @@ namespace Monry.CAFUSample.Domain.Entity
         public ISubject<Unit> WillPauseSubject { get; } = new Subject<Unit>();
         public ISubject<Unit> WillResumeSubject { get; } = new Subject<Unit>();
         public ISubject<Unit> WillFinishSubject { get; } = new Subject<Unit>();
+        public ISubject<Unit> WillAttackSubject { get; } = new Subject<Unit>();
     }
 }
