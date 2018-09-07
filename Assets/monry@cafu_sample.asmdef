@@ -3,6 +3,7 @@
     "references": [
         "umm@animationevent_dispatcher",
         "umm@cafu_core@v3",
+        "umm@cafu_scene",
         "umm@extra_linq",
         "umm@extra_zenject",
         "umm@unirx",
