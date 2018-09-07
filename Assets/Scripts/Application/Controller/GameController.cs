@@ -5,16 +5,15 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Presentation.View.Game
+namespace Monry.CAFUSample.Application.Controller
 {
-    public class Controller : MonoBehaviour,
+    public class GameController : MonoBehaviour,
         IGameStateStartHandlerView
     {
         [Inject] private IGameStateEntity GameStateEntity { get; }
 
         private void Start()
         {
-            Debug.Log("Controller.Start()");
             Observable
                 .Timer(TimeSpan.FromSeconds(3.0))
                 .AsUnitObservable()

@@ -1,5 +1,5 @@
 using CAFU.Scene.Application.Installer;
-using Monry.CAFUSample.Presentation.View.System;
+using Monry.CAFUSample.Application.Controller;
 using Zenject;
 
 namespace Monry.CAFUSample.Application.Installer
@@ -10,6 +10,7 @@ namespace Monry.CAFUSample.Application.Installer
         {
             SceneInstaller.Install(Container);
 
+            // Controllers
             Container.BindInterfacesTo<SystemController>().FromComponentOnRoot().AsCached();
         }
     }

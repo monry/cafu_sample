@@ -3,7 +3,7 @@ using CAFU.Scene.Domain.Entity;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Presentation.View.System
+namespace Monry.CAFUSample.Application.Controller
 {
     public class SystemController : MonoBehaviour, IInitializable
     {

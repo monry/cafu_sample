@@ -1,3 +1,4 @@
+using Monry.CAFUSample.Application.Controller;
 using Monry.CAFUSample.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.Game;
@@ -15,9 +16,6 @@ namespace Monry.CAFUSample.Application.Installer
 
         [SerializeField] private Transform moleParent;
         private Transform MoleParent => moleParent;
-
-        [SerializeField] private Controller controller;
-        private Controller Controller => controller;
 
         [SerializeField] private Score score;
         private Score Score => score;
@@ -39,7 +37,6 @@ namespace Monry.CAFUSample.Application.Installer
             Container.BindInterfacesTo<MolePresenter>().AsCached();
 
             // Views
-            Container.BindInterfacesTo<Controller>().FromInstance(Controller).AsCached();
             Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();
             Container
                 // IMoleView は PlaceholderFactory を用いて生成
@@ -50,6 +47,9 @@ namespace Monry.CAFUSample.Application.Installer
                 .FromComponentInNewPrefab(MolePrefab)
                 // MoleParent の配下に
                 .UnderTransform(MoleParent);
+
+            // Controllers
+            Container.BindInterfacesTo<GameController>().FromComponentOnRoot().AsCached();
         }
     }
 }
