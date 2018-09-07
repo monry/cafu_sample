@@ -1,6 +1,6 @@
 namespace Monry.CAFUSample.Application
 {
-    public static class Constant
+    public static partial class Constant
     {
         public static class Animator
         {
