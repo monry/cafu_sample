@@ -7,7 +7,7 @@ namespace Monry.CAFUSample.Presentation.Presenter
 {
     public class MolePresenter : IMolePresenter
     {
-        [Inject] private PlaceholderFactory<int, IMoleView> MoleViewFactory { get; }
+        [Inject] private IFactory<int, IMoleView> MoleViewFactory { get; }
 
         private List<IMoleView> MoleViewList { get; } = new List<IMoleView>();
 

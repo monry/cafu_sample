@@ -1,8 +1,8 @@
 using Monry.CAFUSample.Application.Controller;
+using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.Game;
-using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.View.Game;
 using UnityEngine;
 using Zenject;
@@ -25,7 +25,7 @@ namespace Monry.CAFUSample.Application.Installer
             // Entities
             Container.Bind<IGameStateEntity>().To<GameStateEntity>().AsCached();
             // MoleEntity は Factory 経由で生成
-            Container.BindFactory<int, IMoleEntity, PlaceholderFactory<int, IMoleEntity>>().To<MoleEntity>();
+            Container.BindIFactory<int, IMoleEntity>().To<MoleEntity>();
 
             // UseCases
             Container.BindInterfacesTo<StageUseCase>().AsCached();
@@ -39,8 +39,8 @@ namespace Monry.CAFUSample.Application.Installer
             // Views
             Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();
             Container
-                // IMoleView は PlaceholderFactory を用いて生成
-                .BindFactory<int, IMoleView, PlaceholderFactory<int, IMoleView>>()
+                // IMoleView の Factory を登録
+                .BindIFactory<int, IMoleView>()
                 // Mole 型として
                 .To<Mole>()
                 // MolePrefab 内のコンポーネントを用いて

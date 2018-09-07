@@ -11,7 +11,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 
     public class MoleUseCase : IMoleUseCase, IInitializable
     {
-        [Inject] private PlaceholderFactory<int, IMoleEntity> MoleEntityFactory { get; }
+        [Inject] private IFactory<int, IMoleEntity> MoleEntityFactory { get; }
 
         [Inject] private IMolePresenter MolePresenter { get; }
 
