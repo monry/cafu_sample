@@ -1,5 +1,5 @@
 ﻿using Monry.CAFUSample.Application;
-using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Domain.Entity;
 using Moq;
 using NUnit.Framework;
 using UniRx;

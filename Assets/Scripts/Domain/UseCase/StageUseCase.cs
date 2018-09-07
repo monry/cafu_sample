@@ -1,5 +1,5 @@
 using CAFU.Core;
-using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Domain.Entity;
 using Zenject;
 
 namespace Monry.CAFUSample.Domain.UseCase

@@ -1,7 +1,7 @@
 using System;
 using CAFU.Core;
 using Monry.CAFUSample.Application;
-using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Domain.Entity;
 using UniRx;
 using UnityEngine;
 using Zenject;

@@ -1,6 +1,6 @@
 using CAFU.Core;
 
-namespace Monry.CAFUSample.Entity
+namespace Monry.CAFUSample.Domain.Entity
 {
     public interface IResultEntity : IEntity
     {

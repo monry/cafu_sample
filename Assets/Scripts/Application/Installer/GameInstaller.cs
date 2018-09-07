@@ -1,6 +1,6 @@
 using Monry.CAFUSample.Application.Controller;
 using Monry.CAFUSample.Domain.UseCase;
-using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.Game;
 using Monry.CAFUSample.View.Game;

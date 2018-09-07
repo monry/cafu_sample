@@ -2,7 +2,7 @@ using CAFU.Core;
 using Monry.CAFUSample.Application;
 using UniRx;
 
-namespace Monry.CAFUSample.Entity
+namespace Monry.CAFUSample.Domain.Entity
 {
     public interface IGameStateEntity : IEntity
     {

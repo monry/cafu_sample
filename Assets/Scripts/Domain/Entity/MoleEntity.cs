@@ -6,7 +6,7 @@ using Monry.CAFUSample.Application;
 using UniRx;
 using Zenject;
 
-namespace Monry.CAFUSample.Entity
+namespace Monry.CAFUSample.Domain.Entity
 {
     public interface IMoleEntity : IEntity
     {

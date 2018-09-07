@@ -1,5 +1,5 @@
 using System;
-using Monry.CAFUSample.Entity;
+using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
 using UniRx;
 using UnityEngine;
