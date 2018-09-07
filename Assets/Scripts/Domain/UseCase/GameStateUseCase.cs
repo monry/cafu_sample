@@ -18,7 +18,6 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         void IInitializable.Initialize()
         {
-            Debug.Log("GameStateUseCase.Initialize()");
             GameStateEntity
                 .Score
                 .Subscribe(GameScoreRenderablePresenter.RenderScore);
