@@ -16,7 +16,6 @@
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
-    "@umm/zenject" umm/zenject#^2.0.0
 
 "@umm/extra_linq@umm/extra_linq#^1.0.0":
   version "1.2.1"
@@ -39,8 +38,14 @@
     mkdirp "^0.5.1"
 
 "@umm/singleton_audiolistener@umm/singleton_audiolistener#^1.0.0":
-  version "1.2.1"
-  resolved "https://codeload.github.com/umm/singleton_audiolistener/tar.gz/89ae7a7f8dd686ab2f4b98bedf55d13206a07130"
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/singleton_audiolistener/tar.gz/aa7c0e12880cf9e98b70bb1f5cb04cb2b878dfb9"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
+"@umm/singleton_eventsystem@umm/singleton_eventsystem#^1.0.0":
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/singleton_eventsystem/tar.gz/ea2a7daec15dee3d26ad4ebaf5bac44b82371431"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
