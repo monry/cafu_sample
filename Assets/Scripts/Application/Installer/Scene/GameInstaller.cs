@@ -7,7 +7,7 @@ using Monry.CAFUSample.View.Game;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Scene
 {
     public class GameInstaller : MonoInstaller<GameInstaller>
     {
@@ -24,7 +24,6 @@ namespace Monry.CAFUSample.Application.Installer
         {
             // Entities
             Container.Bind<IGameStateEntity>().To<GameStateEntity>().AsCached();
-            Container.BindInterfacesTo<ScoreEntity>().AsCached();
             // MoleEntity は Factory 経由で生成
             Container.BindIFactory<int, IMoleEntity>().To<MoleEntity>();
 
@@ -49,6 +48,9 @@ namespace Monry.CAFUSample.Application.Installer
                 .UnderTransform(MoleParent);
 
             // Controllers
+            // FromComponentOnRoot は、Installer が Attach されている GameObject から見た
+            // Root GameObject から探す（っぽい）ので、 GameController は
+            // Installer と同一 GameObject に Attach しています
             Container.BindInterfacesTo<GameController>().FromComponentOnRoot().AsCached();
         }
     }

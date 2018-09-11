@@ -1,4 +1,4 @@
-using Application.Enumerate;
+using Monry.CAFUSample.Application.Enumerate;
 using CAFU.Scene.Domain.Entity;
 using UnityEngine;
 using Zenject;
@@ -7,19 +7,17 @@ namespace Monry.CAFUSample.Application.Controller
 {
     public class SystemController : MonoBehaviour, IInitializable
     {
-        [Inject] private ILoaderRequestEntity LoaderRequestEntity { get; }
+        [Inject] private ILoadRequestEntity LoadRequestEntity { get; }
+        [Inject] private ISceneStateEntity SceneStateEntity { get; }
 
-        [SerializeField] private SceneName sceneName;
+        [SerializeField] private SceneName initialSceneName;
 
-        private SceneName SceneName => sceneName;
+        private SceneName InitialSceneName => initialSceneName;
 
-        public void Initialize()
+        void IInitializable.Initialize()
         {
             // こんな感じに、 Inject した Entity に対して命令するコトで、UseCase への指示出しなどが行える
-            if (SceneName != SceneName.System && !LoaderRequestEntity.HasLoaded(SceneName))
-            {
-                LoaderRequestEntity.RequestLoad(SceneName);
-            }
+            LoadRequestEntity.RequestLoad(InitialSceneName);
         }
     }
 }

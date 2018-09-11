@@ -1,4 +1,4 @@
-namespace Application.Enumerate
+namespace Monry.CAFUSample.Application.Enumerate
 {
     public enum MoleNextState
     {

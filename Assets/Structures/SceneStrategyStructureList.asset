@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afe903675b84e398845deb9caf9bad0, type: 3}
+  m_Name: SceneStrategyStructureList
+  m_EditorClassIdentifier: 
+  list:
+  - sceneName: 0
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 
+    postUnloadSceneNameList: 
+  - sceneName: 1
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 
+    postUnloadSceneNameList: 
+  - sceneName: 2
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 01000000
+    postUnloadSceneNameList: 01000000
+  - sceneName: 3
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 0100000006000000
+    postUnloadSceneNameList: 0100000006000000
+  - sceneName: 4
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 0100000006000000
+    postUnloadSceneNameList: 0100000006000000
+  - sceneName: 5
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 01000000
+    postUnloadSceneNameList: 01000000
+  - sceneName: 6
+    canLoadMultiple: 0
+    loadAsSingle: 0
+    preLoadSceneNameList: 
+    postUnloadSceneNameList: 
