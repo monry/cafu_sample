@@ -337,4 +337,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db07d2e63ed74157a52e0d54cca3fda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSceneName: 1
+  initialSceneName: 3
