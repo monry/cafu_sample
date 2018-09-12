@@ -25,13 +25,15 @@
   ],
   "dependencies": {
     "@umm/animationevent_dispatcher": "umm/animationevent_dispatcher#^1.0.0",
-    "@umm/cafu_core": "../../umm/cafu_core",
+    "@umm/cafu_core": "umm/cafu_core#^3.0.0",
+    "@umm/cafu_scene": "umm/cafu_scene#^1.0.0",
     "@umm/extra_linq": "umm/extra_linq#^1.0.0",
     "@umm/scripts": "umm/scripts#^1.0.0",
     "@umm/singleton_audiolistener": "umm/singleton_audiolistener#^1.0.0",
     "@umm/singleton_eventsystem": "umm/singleton_eventsystem#^1.0.0",
     "@umm/unirx": "umm/unirx#^2.0.0",
-    "@umm/zenject": "umm/zenject#^2.0.0"
+    "@umm/zenject": "umm/zenject#^2.0.0",
+    "@umm/zenject_uiscene": "umm/zenject_uiscene#^1.0.0"
   },
   "devDependencies": {}
 }
