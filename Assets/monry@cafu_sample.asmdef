@@ -4,6 +4,7 @@
         "umm@animationevent_dispatcher",
         "umm@cafu_core@v3",
         "umm@cafu_scene",
+        "umm@cafu_zenject",
         "umm@extra_linq",
         "umm@unirx",
         "Zenject"
