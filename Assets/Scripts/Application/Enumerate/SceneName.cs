@@ -4,10 +4,10 @@ namespace Monry.CAFUSample.Application.Enumerate
     {
         System,
         UI,
-        Title,
-        Game,
-        GameResult,
-        Ranking,
-        ScoreEntity,
+        SampleTitle,
+        SampleGame,
+        SampleGameResult,
+        SampleRanking,
+        SampleScoreEntity,
     }
 }

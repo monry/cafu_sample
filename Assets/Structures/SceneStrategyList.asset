@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7afe903675b84e398845deb9caf9bad0, type: 3}
-  m_Name: SceneStrategyStructureList
+  m_Name: SceneStrategyList
   m_EditorClassIdentifier: 
   list:
   - sceneName: 0
@@ -54,3 +54,5 @@ MonoBehaviour:
     shouldApplyCompleter: 1
     preLoadSceneNameList: 
     postUnloadSceneNameList: 
+  sceneNameConverter:
+    prefix: Sample_
