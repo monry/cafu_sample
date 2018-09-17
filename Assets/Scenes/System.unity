@@ -293,7 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _installers:
   - {fileID: 2144278632}
-  _installerPrefabs: []
+  _installerPrefabs:
+  - {fileID: 114040464616610668, guid: 7d410dbe0af9c471ca0d9fda029c54ae, type: 2}
   _scriptableObjectInstallers: []
   _autoRun: 1
   _parentNewObjectsUnderRoot: 0
@@ -324,8 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb36893e6684699a495caadecc6efc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneStrategyStructureList: {fileID: 11400000, guid: 2b11d8019d4f2497a906285ecc9673d3,
-    type: 2}
+  sceneStrategyList: {fileID: 11400000, guid: 2b11d8019d4f2497a906285ecc9673d3, type: 2}
 --- !u!114 &2144278633
 MonoBehaviour:
   m_ObjectHideFlags: 0

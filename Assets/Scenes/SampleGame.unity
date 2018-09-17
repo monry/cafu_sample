@@ -682,4 +682,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a6a6c911354d24ba40431e0dc05296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldSearchCanvasRecursive: 0
+  includeChildren: 0
