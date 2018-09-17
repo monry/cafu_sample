@@ -60,8 +60,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/unirx@umm/unirx#^2.0.0":
-  version "2.1.1"
-  resolved "https://codeload.github.com/umm/unirx/tar.gz/74ac39b045cd9a12a5c8f99e1301abeff597348c"
+  version "2.1.2"
+  resolved "https://codeload.github.com/umm/unirx/tar.gz/06b8c930847ea4c86c0f7c2409d5bfc4a8409e45"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
