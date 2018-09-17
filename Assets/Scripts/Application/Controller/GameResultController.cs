@@ -16,7 +16,7 @@ namespace Monry.CAFUSample.Application.Controller
     {
         [Inject] private IScoreEntity ScoreEntity { get; }
         [Inject] IMessagePublisher IInstancePublisher.MessagePublisher { get; }
-        private ISubject<SceneName> RequestUnloadSubject { get; } = new Subject<SceneName>();
+        private ISubject<string> RequestUnloadSubject { get; } = new Subject<string>();
 
         void IInitializable.Initialize()
         {
@@ -25,13 +25,13 @@ namespace Monry.CAFUSample.Application.Controller
             this.Publish();
 
             Observable.Interval(TimeSpan.FromSeconds(1)).Subscribe(_ => Debug.Log(ScoreEntity.Current.Value)).AddTo(this);
-            Observable.Timer(TimeSpan.FromSeconds(5)).Subscribe(_ => RequestUnloadSubject.OnNext(SceneName.SampleGameResult));
+            Observable.Timer(TimeSpan.FromSeconds(5)).Subscribe(_ => RequestUnloadSubject.OnNext(SceneName.SampleGameResult.ToString()));
         }
 
         // 直接 Subject を公開する手もあるが、厳密に実装してみる
         public IObservable<string> RequestUnloadAsObservable()
         {
-            return RequestUnloadSubject.Select(x => x.ToString());
+            return RequestUnloadSubject;
         }
     }
 }
