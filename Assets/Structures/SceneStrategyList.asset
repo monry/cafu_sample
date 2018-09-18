@@ -14,45 +14,43 @@ MonoBehaviour:
   list:
   - sceneName: 0
     canLoadMultiple: 0
+    protectFromUnloading: 1
     loadAsSingle: 0
-    shouldApplyCompleter: 0
     preLoadSceneNameList: 
     postUnloadSceneNameList: 
   - sceneName: 1
     canLoadMultiple: 0
+    protectFromUnloading: 1
     loadAsSingle: 0
-    shouldApplyCompleter: 0
     preLoadSceneNameList: 
     postUnloadSceneNameList: 
   - sceneName: 2
     canLoadMultiple: 0
+    protectFromUnloading: 0
     loadAsSingle: 0
-    shouldApplyCompleter: 1
     preLoadSceneNameList: 01000000
-    postUnloadSceneNameList: 01000000
+    postUnloadSceneNameList: 
   - sceneName: 3
     canLoadMultiple: 0
+    protectFromUnloading: 0
     loadAsSingle: 0
-    shouldApplyCompleter: 1
     preLoadSceneNameList: 0100000006000000
-    postUnloadSceneNameList: 0100000006000000
+    postUnloadSceneNameList: 06000000
   - sceneName: 4
     canLoadMultiple: 0
+    protectFromUnloading: 0
     loadAsSingle: 0
-    shouldApplyCompleter: 1
-    preLoadSceneNameList: 0100000006000000
-    postUnloadSceneNameList: 0100000006000000
+    preLoadSceneNameList: 0100000003000000
+    postUnloadSceneNameList: 
   - sceneName: 5
     canLoadMultiple: 0
+    protectFromUnloading: 0
     loadAsSingle: 0
-    shouldApplyCompleter: 1
     preLoadSceneNameList: 01000000
     postUnloadSceneNameList: 01000000
   - sceneName: 6
     canLoadMultiple: 0
+    protectFromUnloading: 0
     loadAsSingle: 0
-    shouldApplyCompleter: 1
     preLoadSceneNameList: 
     postUnloadSceneNameList: 
-  sceneNameConverter:
-    prefix: Sample_

@@ -232,7 +232,7 @@ MonoBehaviour:
   - GameResult
   _parentContractNames:
   - System
-  - SharedEntity
+  - Game
 --- !u!4 &1560893569
 Transform:
   m_ObjectHideFlags: 0
