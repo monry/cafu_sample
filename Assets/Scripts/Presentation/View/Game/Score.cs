@@ -2,7 +2,7 @@ using Monry.CAFUSample.Presentation.Presenter;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Monry.CAFUSample.View.Game
+namespace Monry.CAFUSample.Presentation.View.Game
 {
     public class Score : MonoBehaviour,
         IScoreView
