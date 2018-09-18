@@ -2,7 +2,7 @@ using CAFU.Core;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public interface IGameScoreRenderablePresenter : IPresenter
+    public interface IGameScoreRenderable : IPresenter
     {
         void RenderScore(int score);
     }

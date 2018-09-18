@@ -2,7 +2,7 @@ using CAFU.Core;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public interface IScoreView : IView
+    public interface IScoreRenderer : IView
     {
         void Render(int score);
     }

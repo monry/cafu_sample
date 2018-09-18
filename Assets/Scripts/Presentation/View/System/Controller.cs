@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CAFU.Scene.Application;
-using CAFU.Scene.Domain.Entity;
 using CAFU.Scene.Presentation.Presenter;
 using CAFU.Zenject.Utility;
 using Modules.Scripts.Utility;
@@ -11,15 +10,14 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Controller
+namespace Monry.CAFUSample.Presentation.View.System
 {
-    public class SystemController : MonoBehaviour,
+    public class Controller : MonoBehaviour,
         IInitializable,
         IInstancePublisher,
         ISceneLoadRequestable,
         ISystemController
     {
-        [Inject] private ISceneStateEntity SceneStateEntity { get; }
         [Inject] IMessagePublisher IInstancePublisher.MessagePublisher { get; }
 
         [SerializeField] private List<SceneName> initialSceneNameList;
@@ -35,7 +33,7 @@ namespace Monry.CAFUSample.Application.Controller
         void IInitializable.Initialize()
         {
             // インスタンス生成を通知
-            //   CAFU Scene に対してインスタンスを通知して、Load/Unload のリクエストを処理させる
+            //   CAFU Scene に対してインスタンスを通知して、Load/Unload のリクエストを処理可能にする
             this.Publish();
 
             InitialSceneNameList.ToObservable().Subscribe(RequestLoadSubject);

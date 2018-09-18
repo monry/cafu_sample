@@ -23,7 +23,7 @@ namespace Monry.CAFUSample.Application
 
         public const int MoleAmount = 10;
 
-        public const float RemainingTime = 30.0f;
+        public const float RemainingTime = 5.0f;
 
         public const float MoleActiveDuration = 1.5f;
 

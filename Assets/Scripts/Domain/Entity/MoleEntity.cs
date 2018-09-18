@@ -43,6 +43,9 @@ namespace Monry.CAFUSample.Domain.Entity
         public ISubject<Unit> DidActiveSubject { get; } = new Subject<Unit>();
         public ISubject<Unit> DidInactiveSubject { get; } = new Subject<Unit>();
 
+        private IDisposable DidActiveDisposable { get; set; }
+        private IDisposable DidInactiveDisposable { get; set; }
+
         public void Start()
         {
             DidInactiveSubject.OnNext(Unit.Default);
@@ -54,6 +57,8 @@ namespace Monry.CAFUSample.Domain.Entity
             WillInactiveSubject.OnCompleted();
             DidActiveSubject.OnCompleted();
             DidInactiveSubject.OnCompleted();
+            DidActiveDisposable?.Dispose();
+            DidInactiveDisposable?.Dispose();
         }
 
         public MoleEntity(int index)
@@ -64,11 +69,11 @@ namespace Monry.CAFUSample.Domain.Entity
         [Inject]
         public void Initialize()
         {
-            DidActiveSubject
+            DidActiveDisposable = DidActiveSubject
                 .Delay(TimeSpan.FromSeconds(Constant.MoleActiveDuration))
                 .Where(_ => CanAttack?.Invoke() ?? false)
                 .Subscribe(_ => Hide?.Invoke());
-            DidInactiveSubject
+            DidInactiveDisposable = DidInactiveSubject
                 .SelectMany(_ => Observable.Timer(TimeSpan.FromSeconds(UnityEngine.Random.Range(Constant.MoleInactiveDurationFrom, Constant.MoleInactiveDurationTo))))
                 .Select(_ => NextActionMap.Random())
                 .Subscribe(x => x.Value?.Invoke(this));

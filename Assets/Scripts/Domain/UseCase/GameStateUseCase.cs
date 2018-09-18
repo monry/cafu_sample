@@ -1,6 +1,8 @@
 using System;
 using CAFU.Core;
+using CAFU.Scene.Domain.Entity;
 using Monry.CAFUSample.Application;
+using Monry.CAFUSample.Application.Enumerate;
 using Monry.CAFUSample.Domain.Entity;
 using UniRx;
 using UnityEngine;
@@ -16,9 +18,11 @@ namespace Monry.CAFUSample.Domain.UseCase
     {
         [Inject] private IScoreEntity ScoreEntity { get; }
 
+        [Inject] private IRequestEntity RequestEntity { get; }
+
         [Inject] private IGameStateEntity GameStateEntity { get; }
 
-        [Inject] private IGameScoreRenderablePresenter GameScoreRenderablePresenter { get; }
+        [Inject] private IGameScoreRenderable GameScoreRenderable { get; }
 
         private IDisposable GameTimerSubscription { get; set; }
 
@@ -26,7 +30,7 @@ namespace Monry.CAFUSample.Domain.UseCase
         {
             ScoreEntity
                 .Current
-                .Subscribe(GameScoreRenderablePresenter.RenderScore);
+                .Subscribe(GameScoreRenderable.RenderScore);
             GameStateEntity
                 .RemainingTime
                 .Where(x => x < 0.0f)
@@ -38,6 +42,11 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
             GameStateEntity.WillFinishSubject.Subscribe(_ => FinishGame());
             GameStateEntity.WillAttackSubject.Subscribe(_ => ScoreEntity.Increment());
+
+            Observable
+                .Timer(TimeSpan.FromSeconds(1.0))
+                .AsUnitObservable()
+                .Subscribe(GameStateEntity.WillStartSubject.OnNext);
         }
 
         private void StartGame()
@@ -46,8 +55,6 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameTimerSubscription = Observable
                 .EveryUpdate()
                 .Subscribe(_ => GameStateEntity.RemainingTime.Value -= Time.deltaTime);
-
-            Debug.Log("StartGame");
         }
 
         private void ResumeGame()
@@ -62,6 +69,7 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameTimerSubscription?.Dispose();
             GameStateEntity.RemainingTime.Value = 0.0f;
 
+            // 終了帯とか出すならココを修正する
             GameStateEntity.WillFinishSubject.OnNext(Unit.Default);
         }
 
@@ -72,7 +80,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         private void FinishGame()
         {
-            Debug.Log("Finish!!!");
+            RequestEntity.RequestLoad(SceneName.SampleGameResult.ToString());
         }
     }
 }

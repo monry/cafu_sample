@@ -1,4 +1,3 @@
-using Monry.CAFUSample.Application.Controller;
 using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Presentation.Presenter;
@@ -46,12 +45,6 @@ namespace Monry.CAFUSample.Application.Installer
                 .FromComponentInNewPrefab(MolePrefab)
                 // MoleParent の配下に
                 .UnderTransform(MoleParent);
-
-            // Controllers
-            // FromComponentOnRoot は、Installer が Attach されている GameObject から見た
-            // Root GameObject から探す（っぽい）ので、 GameController は
-            // Installer と同一 GameObject に Attach しています
-            Container.BindInterfacesTo<GameController>().FromComponentOnRoot().AsCached();
         }
     }
 }

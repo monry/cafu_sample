@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace Monry.CAFUSample.Presentation.View.Game
 {
     public class Score : MonoBehaviour,
-        IScoreView
+        IScoreRenderer
     {
         private Text label;
         private Text Label => label ? label : label = GetComponent<Text>();

@@ -15,7 +15,7 @@ namespace Monry.CAFUSample.Domain.Entity
             Container.BindInterfacesTo<GameStateEntity>().AsCached();
             Container.BindInterfacesTo<ScoreEntity>().AsCached();
 
-            Container.Bind<IGameScoreRenderablePresenter>().FromMock();
+            Container.Bind<IGameScoreRenderable>().FromMock();
             Container.BindInterfacesAndSelfTo<GameStateUseCase>().AsCached();
         }
 

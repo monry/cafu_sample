@@ -3,14 +3,15 @@ using System.Linq;
 using CAFU.Scene.Application.Installer;
 using CAFU.Scene.Domain.Structure;
 using CAFU.Scene.Domain.UseCase;
-using Monry.CAFUSample.Application.Controller;
 using Monry.CAFUSample.Domain.Structure;
+using Monry.CAFUSample.Presentation.View.System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Monry.CAFUSample.Application.Installer
 {
+    // FIXME: 汎用化する
     public class SystemInstaller : MonoInstaller<SystemInstaller>
     {
         [SerializeField] private SceneStrategyList sceneStrategyList;
@@ -46,7 +47,7 @@ namespace Monry.CAFUSample.Application.Installer
                 .FromInstance(SceneStrategyList.AsDictionary());
 
             // Controllers
-            Container.BindInterfacesTo<SystemController>().FromComponentOnRoot().AsCached();
+            Container.BindInterfacesTo<Controller>().FromComponentOnRoot().AsCached();
         }
     }
 }

@@ -4,13 +4,13 @@ using Zenject;
 namespace Monry.CAFUSample.Presentation.Presenter
 {
     public class GamePresenter :
-        IGameScoreRenderablePresenter
+        IGameScoreRenderable
     {
-        [Inject] private IScoreView ScoreView { get; }
+        [Inject] private IScoreRenderer ScoreRenderer { get; }
 
         public void RenderScore(int score)
         {
-            ScoreView.Render(score);
+            ScoreRenderer.Render(score);
         }
     }
 }
