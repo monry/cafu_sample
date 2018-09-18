@@ -19,8 +19,8 @@
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
 "@umm/cafu_scene@umm/cafu_scene#^1.0.0":
-  version "1.1.1"
-  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/c93dc846b8ee9fb90c9bb6d46c3c3bbfd714bc65"
+  version "1.2.0"
+  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/5bafa806c9709d86930e42ed9dc9beb02539884a"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/cafu_zenject" umm/cafu_zenject#^1.0.0
