@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleRanking.unity
     guid: 342ca17f9996d43cfac77aac93ea048d
   - enabled: 1
-    path: Assets/Scenes/SampleScoreEntity.unity
-    guid: 26b1e11e387e94ec9b5faf65df9e88d4
-  - enabled: 1
     path: Assets/Scenes/SampleTitle.unity
     guid: 5aab726347fde4bdaa5b2e84b72c74c4
   m_configObjects: {}

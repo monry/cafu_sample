@@ -1,7 +1,7 @@
 using Monry.CAFUSample.Application.Controller;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer.Scene
+namespace Monry.CAFUSample.Application.Installer
 {
     public class GameResultInstaller : MonoInstaller<GameResultInstaller>
     {

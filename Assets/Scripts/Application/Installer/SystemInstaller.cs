@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer.Scene
+namespace Monry.CAFUSample.Application.Installer
 {
     public class SystemInstaller : MonoInstaller<SystemInstaller>
     {

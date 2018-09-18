@@ -6,7 +6,7 @@ using Monry.CAFUSample.Presentation.View.Game;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer.Scene
+namespace Monry.CAFUSample.Application.Installer
 {
     public class GameInstaller : MonoInstaller<GameInstaller>
     {
@@ -23,6 +23,7 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         {
             // Entities
             Container.Bind<IGameStateEntity>().To<GameStateEntity>().AsCached();
+            Container.BindInterfacesTo<ScoreEntity>().AsCached();
             // MoleEntity は Factory 経由で生成
             Container.BindIFactory<int, IMoleEntity>().To<MoleEntity>();
 

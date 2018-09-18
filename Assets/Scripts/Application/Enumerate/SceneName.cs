@@ -8,6 +8,5 @@ namespace Monry.CAFUSample.Application.Enumerate
         SampleGame,
         SampleGameResult,
         SampleRanking,
-        SampleScoreEntity,
     }
 }
