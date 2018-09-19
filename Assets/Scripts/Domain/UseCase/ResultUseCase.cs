@@ -1,41 +1,62 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using CAFU.Core;
+using CAFU.Data.Data.UseCase;
+using CAFU.Data.Utility;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Domain.Entity;
-using Monry.CAFUSample.Domain.Structure.Presentation;
+using Monry.CAFUSample.Domain.Structure;
 using UniRx;
-using UnityEngine;
 using Zenject;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public interface IResultUseCase : IUseCase
+    public class ResultUseCase : IUseCase, IInitializable
     {
-    }
-
-    public class ResultUseCase : IResultUseCase,
-        IInitializable
-    {
-        [Inject] private IScoreEntity ScoreEntity { get; }
-        [Inject] private IGameResultHandler GameResultHandler { get; }
-        [Inject] private IFactory<int, string, DateTime, IResultEntity> ResultEntityFactory { get; }
-        [Inject] private ITranslator<IResultEntity, IResult> ResultTranslator { get; }
+        [Inject(Id = Constant.InjectId.RankingFileUri)] private Uri RankingFileUri { get; }
+        [Inject] private IResultListHandler ResultListHandler { get; }
+        [Inject] private IAsyncRWHandler AsyncRWHandler { get; }
+        [Inject] private ITranslator<IResultListEntity, IDataResultList> DataResultListStructureTranslator { get; }
+        [Inject] private ITranslator<IDataResultList, IResultListEntity> ResultListEntityTranslator { get; }
         [Inject] private AsyncSubject<IResultEntity> ResultEntitySubject { get; }
+        [Inject] private AsyncSubject<IResultListEntity> RankingEntitySubject { get; }
+        [Inject] private IFactory<IEnumerable<IResultEntity>, IResultListEntity> ResultListEntityFactory { get; }
 
         void IInitializable.Initialize()
         {
-            ResultEntitySubject
-                .OnNext(
-                    ResultEntityFactory
-                        .Create(
-                            ScoreEntity.Current.Value,
-                            PlayerPrefs.GetString(Constant.PlayerPrefsKey.LastPlayerName, string.Empty),
-                            DateTime.Now
-                        )
-                );
-            ResultEntitySubject.OnCompleted();
-            GameResultHandler.RenderResult(ResultTranslator.Translate(ResultEntitySubject.Value));
-            GameResultHandler.UpdatePlayerNameAsObservable().Subscribe(ResultEntitySubject.Value.UpdatePlayerName);
+            ResultListHandler.LoadAsObservable().Subscribe(_ => Read());
+            ResultListHandler.SaveAsObservable().Subscribe(_ => Write());
+            ResultEntitySubject.Subscribe(AddResult);
+        }
+
+        private async void Read()
+        {
+            try
+            {
+                var bytes = await AsyncRWHandler.ReadAsync(RankingFileUri);
+                RankingEntitySubject.OnNext(ResultListEntityTranslator.Translate(bytes.FromByteArray<DataResultList>()));
+                RankingEntitySubject.OnCompleted();
+            }
+            catch (FileNotFoundException)
+            {
+                RankingEntitySubject.OnNext(ResultListEntityFactory.Create(new List<IResultEntity>()));
+                RankingEntitySubject.OnCompleted();
+            }
+        }
+
+        private async void Write()
+        {
+            // 念のため ResultListEntity の生成準備を待つ
+            await RankingEntitySubject;
+            var ranking = DataResultListStructureTranslator.Translate(RankingEntitySubject.Value);
+            await AsyncRWHandler.WriteAsync(RankingFileUri, ranking.ToByteArray());
+        }
+
+        private async void AddResult(IResultEntity resultEntity)
+        {
+            await RankingEntitySubject;
+            RankingEntitySubject.Value.List.Add(resultEntity);
         }
     }
 }

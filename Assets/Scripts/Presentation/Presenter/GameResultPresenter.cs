@@ -1,6 +1,6 @@
 using System;
 using Monry.CAFUSample.Application;
-using Monry.CAFUSample.Domain.Structure.Presentation;
+using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.UseCase;
 using UniRx;
 using Zenject;
@@ -18,11 +18,11 @@ namespace Monry.CAFUSample.Presentation.Presenter
         [Inject(Id = Constant.InjectId.ButtonReplay)] private IButtonTrigger TriggerReplay { get; }
         [Inject(Id = Constant.InjectId.ButtonFinish)] private IButtonTrigger TriggerFinish { get; }
 
-        public void RenderResult(IResult result)
+        public void RenderResult(IPresentationResult presentationResult)
         {
-            ScoreRenderer.Render(result.Score);
-            PlayerNameRenderer.Render(result.PlayerName);
-            PlayedAtRenderer.Render(result.PlayedAt);
+            ScoreRenderer.Render(presentationResult.Score);
+            PlayerNameRenderer.Render(presentationResult.PlayerName);
+            PlayedAtRenderer.Render(presentationResult.PlayedAt);
         }
 
         public IObservable<string> UpdatePlayerNameAsObservable()

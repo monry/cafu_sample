@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Monry.CAFUSample.Domain.Structure.Presentation;
+using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.UseCase;
 using UniRx;
 using Zenject;
@@ -11,9 +11,9 @@ namespace Monry.CAFUSample.Presentation.Presenter
     {
         [Inject] private IFactory<IResultRenderer> ResultRendererFactory { get; }
 
-        public void RenderRanking(IResultList resultList)
+        public void RenderRanking(IPresentationResultList presentationResultList)
         {
-            resultList.List.ToList().ForEach(x => ResultRendererFactory.Create().Render(0, x));
+            presentationResultList.List.ToList().ForEach(x => ResultRendererFactory.Create().Render(0, x));
         }
 
         public IObservable<Unit> LoadAsObservable()

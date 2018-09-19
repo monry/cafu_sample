@@ -13,13 +13,9 @@ namespace Monry.CAFUSample.Domain.Entity
     {
         public IList<IResultEntity> List { get; }
 
-        public ResultListEntity(IEnumerable<ResultEntity> list)
+        public ResultListEntity(IEnumerable<IResultEntity> list)
         {
-            List = list.Cast<IResultEntity>().ToList();
-        }
-
-        public ResultListEntity() : this(new List<ResultEntity>())
-        {
+            List = list.ToList();
         }
     }
 }

@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using CAFU.Data.Data.DataStore;
 using CAFU.Data.Data.Repository;
 using CAFU.Data.Data.UseCase;
 using Monry.CAFUSample.Domain.Entity;
+using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.Translator;
 using Monry.CAFUSample.Domain.UseCase;
 using UniRx;
@@ -12,22 +14,32 @@ using Zenject;
 
 namespace Monry.CAFUSample.Application.Installer.Domain
 {
-    [CreateAssetMenu(fileName = "ResultListInstaller", menuName = "Installers/ResultListInstaller")]
-    public class ResultListInstaller : ScriptableObjectInstaller<ResultListInstaller>
+    [CreateAssetMenu(fileName = "ResultInstaller", menuName = "Installers/ResultInstaller")]
+    public class ResultInstaller : ScriptableObjectInstaller<ResultInstaller>
     {
         public override void InstallBindings()
         {
+            // Entities
             Container.Bind<AsyncSubject<IResultEntity>>().FromInstance(new AsyncSubject<IResultEntity>()).AsCached();
             Container.Bind<AsyncSubject<IResultListEntity>>().FromInstance(new AsyncSubject<IResultListEntity>()).AsCached();
-            Container.BindIFactory<IResultListEntity>().To<ResultListEntity>();
+            Container.BindIFactory<int, string, DateTime, IResultEntity>().To<ResultEntity>();
+            Container.BindIFactory<IEnumerable<IResultEntity>, IResultListEntity>().To<ResultListEntity>();
 
-            Container.BindInterfacesTo<RankingUseCase>().AsCached();
+            // Structures
+            Container.BindIFactory<int, string, DateTime, IPresentationResult>().To<PresentationResult>();
+            Container.BindIFactory<int, string, string, IDataResult>().To<DataResult>();
 
+            // UseCases
+            Container.BindInterfacesTo<ResultUseCase>().AsCached();
+
+            // Repositories
             Container.Bind<IAsyncRWHandler>().To<AsyncRWRepository>().AsCached();
 
+            // DataStores
             Container.BindInterfacesTo<AsyncLocalStorageDataStore>().AsCached();
 
-            Container.BindInterfacesTo<ResultListTranslator>().AsCached();
+            // Translators
+            Container.BindInterfacesTo<ResultTranslator>().AsCached();
 
             Container
                 .BindInstance(

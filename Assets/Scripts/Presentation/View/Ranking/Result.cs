@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Monry.CAFUSample.Domain.Structure.Presentation;
+using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Presentation.Presenter;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,13 +25,13 @@ namespace Monry.CAFUSample.Presentation.View.Ranking
         private Text PlayedAt => playedAt;
         private Text Score => score;
 
-        public void Render(int rankValue, IResult result)
+        public void Render(int rankValue, IPresentationResult presentationResult)
         {
             Rank.text = rankValue.ToString();
             Background.color = ColorMap[transform.GetSiblingIndex() % 2];
-            PlayerName.text = result.PlayerName;
-            PlayedAt.text = result.PlayedAt.ToString("yyyy/MM/dd HH:mm:ss");
-            Score.text = result.Score.ToString();
+            PlayerName.text = presentationResult.PlayerName;
+            PlayedAt.text = presentationResult.PlayedAt.ToString("yyyy/MM/dd HH:mm:ss");
+            Score.text = presentationResult.Score.ToString();
         }
     }
 }

@@ -1,12 +1,6 @@
-using System;
-using CAFU.Core;
-using Monry.CAFUSample.Domain.Translator;
-using Monry.CAFUSample.Domain.Entity;
-using Monry.CAFUSample.Domain.Structure.Presentation;
 using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.GameResult;
-using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -31,15 +25,8 @@ namespace Monry.CAFUSample.Application.Installer.Scene
 
         public override void InstallBindings()
         {
-            // Entities
-            Container.Bind<ISubject<IResultEntity>>().FromInstance(new AsyncSubject<IResultEntity>()).AsCached();
-            Container.BindIFactory<int, string, DateTime, IResultEntity>().To<ResultEntity>();
-
             // UseCases
-            Container.BindInterfacesTo<ResultUseCase>().AsCached();
-
-            // Translators
-            Container.Bind<ITranslator<IResultEntity, IResult>>().To<ResultTranslator>().AsCached();
+            Container.BindInterfacesTo<ResultNavigationUseCase>().AsCached();
 
             // Presenters
             Container.BindInterfacesTo<GameResultPresenter>().AsCached();
