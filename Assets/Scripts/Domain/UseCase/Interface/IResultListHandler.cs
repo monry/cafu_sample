@@ -4,7 +4,7 @@ using IPresenter = CAFU.Core.IPresenter;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public interface IRankingHandler : IPresenter
+    public interface IResultListHandler : IPresenter
     {
         IObservable<Unit> LoadAsObservable();
         IObservable<Unit> SaveAsObservable();

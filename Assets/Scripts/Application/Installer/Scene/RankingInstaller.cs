@@ -18,7 +18,7 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         {
             Container.BindInterfacesTo<RankingNavigationUseCase>().AsCached();
 
-            Container.BindInterfacesTo<RankingPresenter>().AsCached();
+            Container.BindInterfacesTo<ResultListPresenter>().AsCached();
 
             Container
                 .BindIFactory<IResultRenderer>()

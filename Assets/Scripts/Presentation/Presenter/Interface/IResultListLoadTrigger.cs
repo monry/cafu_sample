@@ -4,8 +4,8 @@ using UniRx;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public interface IRankingLoadTrigger : IView
+    public interface IResultListLoadTrigger : IView
     {
-        IObservable<Unit> LoadTriggerAsObservable();
+        IObservable<Unit> LoadResultListAsObservable();
     }
 }

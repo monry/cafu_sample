@@ -9,8 +9,8 @@ namespace Monry.CAFUSample.Domain.UseCase
     public class RankingNavigationUseCase : IUseCase, IInitializable
     {
         [Inject] private IRankingRenderable RankingRenderable { get; }
-        [Inject] private ITranslator<IRankingEntity, IRanking> RankingStructureTranslator { get; }
-        [Inject] private AsyncSubject<IRankingEntity> RankingEntitySubject { get; }
+        [Inject] private ITranslator<IResultListEntity, IResultList> RankingStructureTranslator { get; }
+        [Inject] private AsyncSubject<IResultListEntity> RankingEntitySubject { get; }
 
         void IInitializable.Initialize()
         {

@@ -33,6 +33,6 @@ namespace Monry.CAFUSample.Application
 
         public const float MoleInactiveDurationTo = 5.0f;
 
-        public static readonly string RankingFilePath = Path.Combine("Data", "ranking.bytes");
+        public static readonly string ResultListFilePath = Path.Combine("Data", "result_list.bytes");
     }
 }

@@ -7,12 +7,12 @@ using UnityEngine.UI;
 namespace Monry.CAFUSample.Presentation.View.GameResult
 {
     [RequireComponent(typeof(Button))]
-    public class ButtonSend : MonoBehaviour, IRankingSaveTrigger
+    public class ButtonSend : MonoBehaviour, IResultListSaveTrigger
     {
         [SerializeField] private Button button;
         private Button Button => button ? button : button = GetComponent<Button>();
 
-        IObservable<Unit> IRankingSaveTrigger.SaveRankingAsObservable()
+        IObservable<Unit> IResultListSaveTrigger.SaveResultListAsObservable()
         {
             return Button.OnClickAsObservable();
         }

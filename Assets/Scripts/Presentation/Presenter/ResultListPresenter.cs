@@ -7,13 +7,13 @@ using Zenject;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public class RankingPresenter : IRankingRenderable, IRankingHandler
+    public class ResultListPresenter : IRankingRenderable, IResultListHandler
     {
         [Inject] private IFactory<IResultRenderer> ResultRendererFactory { get; }
 
-        public void RenderRanking(IRanking ranking)
+        public void RenderRanking(IResultList resultList)
         {
-            ranking.ResultList.ToList().ForEach(x => ResultRendererFactory.Create().Render(0, x));
+            resultList.List.ToList().ForEach(x => ResultRendererFactory.Create().Render(0, x));
         }
 
         public IObservable<Unit> LoadAsObservable()

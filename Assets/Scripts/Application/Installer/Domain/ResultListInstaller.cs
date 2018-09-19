@@ -12,14 +12,14 @@ using Zenject;
 
 namespace Monry.CAFUSample.Application.Installer.Domain
 {
-    [CreateAssetMenu(fileName = "RankingInstaller", menuName = "Installers/RankingInstaller")]
-    public class RankingInstaller : ScriptableObjectInstaller<RankingInstaller>
+    [CreateAssetMenu(fileName = "ResultListInstaller", menuName = "Installers/ResultListInstaller")]
+    public class ResultListInstaller : ScriptableObjectInstaller<ResultListInstaller>
     {
         public override void InstallBindings()
         {
             Container.Bind<AsyncSubject<IResultEntity>>().FromInstance(new AsyncSubject<IResultEntity>()).AsCached();
-            Container.Bind<AsyncSubject<IRankingEntity>>().FromInstance(new AsyncSubject<IRankingEntity>()).AsCached();
-            Container.BindIFactory<IRankingEntity>().To<RankingEntity>();
+            Container.Bind<AsyncSubject<IResultListEntity>>().FromInstance(new AsyncSubject<IResultListEntity>()).AsCached();
+            Container.BindIFactory<IResultListEntity>().To<ResultListEntity>();
 
             Container.BindInterfacesTo<RankingUseCase>().AsCached();
 
@@ -27,7 +27,7 @@ namespace Monry.CAFUSample.Application.Installer.Domain
 
             Container.BindInterfacesTo<AsyncLocalStorageDataStore>().AsCached();
 
-            Container.BindInterfacesTo<RankingTranslator>().AsCached();
+            Container.BindInterfacesTo<ResultListTranslator>().AsCached();
 
             Container
                 .BindInstance(
@@ -35,7 +35,7 @@ namespace Monry.CAFUSample.Application.Installer.Domain
                     {
                         Scheme = "file",
                         Host = string.Empty,
-                        Path = Path.Combine(UnityEngine.Application.persistentDataPath, Constant.RankingFilePath),
+                        Path = Path.Combine(UnityEngine.Application.persistentDataPath, Constant.ResultListFilePath),
                     }.Uri
                 )
                 .WithId(Constant.InjectId.RankingFileUri)

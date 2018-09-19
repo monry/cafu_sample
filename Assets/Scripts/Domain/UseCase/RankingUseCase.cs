@@ -14,18 +14,18 @@ namespace Monry.CAFUSample.Domain.UseCase
     public class RankingUseCase : IUseCase, IInitializable
     {
         [Inject(Id = Constant.InjectId.RankingFileUri)] private Uri RankingFileUri { get; }
-        [Inject] private IRankingHandler RankingHandler { get; }
+        [Inject] private IResultListHandler ResultListHandler { get; }
         [Inject] private IAsyncRWHandler AsyncRWHandler { get; }
-        [Inject] private ITranslator<IRankingEntity, IRanking> RankingStructureTranslator { get; }
-        [Inject] private ITranslator<IRanking, IRankingEntity> RankingEntityTranslator { get; }
+        [Inject] private ITranslator<IResultListEntity, IResultList> RankingStructureTranslator { get; }
+        [Inject] private ITranslator<IResultList, IResultListEntity> RankingEntityTranslator { get; }
         [Inject] private AsyncSubject<IResultEntity> ResultEntitySubject { get; }
-        [Inject] private AsyncSubject<IRankingEntity> RankingEntitySubject { get; }
-        [Inject] private IFactory<IRankingEntity> RankingEntityFactory { get; }
+        [Inject] private AsyncSubject<IResultListEntity> RankingEntitySubject { get; }
+        [Inject] private IFactory<IResultListEntity> RankingEntityFactory { get; }
 
         void IInitializable.Initialize()
         {
-            RankingHandler.LoadAsObservable().Subscribe(_ => Read());
-            RankingHandler.SaveAsObservable().Subscribe(_ => Write());
+            ResultListHandler.LoadAsObservable().Subscribe(_ => Read());
+            ResultListHandler.SaveAsObservable().Subscribe(_ => Write());
             ResultEntitySubject.Subscribe(AddResult);
         }
 
@@ -34,7 +34,7 @@ namespace Monry.CAFUSample.Domain.UseCase
             try
             {
                 var bytes = await AsyncRWHandler.ReadAsync(RankingFileUri);
-                RankingEntitySubject.OnNext(RankingEntityTranslator.Translate(bytes.FromByteArray<Ranking>()));
+                RankingEntitySubject.OnNext(RankingEntityTranslator.Translate(bytes.FromByteArray<ResultList>()));
                 RankingEntitySubject.OnCompleted();
             }
             catch (FileNotFoundException)
@@ -46,7 +46,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         private async void Write()
         {
-            // 念のため RankingEntity の生成準備を待つ
+            // 念のため ResultListEntity の生成準備を待つ
             await RankingEntitySubject;
             var ranking = RankingStructureTranslator.Translate(RankingEntitySubject.Value);
             await AsyncRWHandler.WriteAsync(RankingFileUri, ranking.ToByteArray());
@@ -55,7 +55,7 @@ namespace Monry.CAFUSample.Domain.UseCase
         private async void AddResult(IResultEntity resultEntity)
         {
             await RankingEntitySubject;
-            RankingEntitySubject.Value.ResultEntityList.Add(resultEntity);
+            RankingEntitySubject.Value.List.Add(resultEntity);
         }
     }
 }

@@ -7,14 +7,14 @@ using Zenject;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public class GameResultPresenter : IGameResultHandler, IGameResultNavigator, IRankingHandler
+    public class GameResultPresenter : IGameResultHandler, IGameResultNavigator, IResultListHandler
     {
         [Inject] private IScoreRenderer ScoreRenderer { get; }
         [Inject] private IPlayerNameRenderer PlayerNameRenderer { get; }
         [Inject] private IPlayedAtRenderer PlayedAtRenderer { get; }
         [Inject] private IPlayerNameReceiver PlayerNameReceiver { get; }
-        [Inject] private IRankingSaveTrigger TriggerRankingSave { get; }
-        [Inject] private IRankingLoadTrigger TriggerRankingLoad { get; }
+        [Inject] private IResultListSaveTrigger TriggerResultListSave { get; }
+        [Inject] private IResultListLoadTrigger TriggerResultListLoad { get; }
         [Inject(Id = Constant.InjectId.ButtonReplay)] private IButtonTrigger TriggerReplay { get; }
         [Inject(Id = Constant.InjectId.ButtonFinish)] private IButtonTrigger TriggerFinish { get; }
 
@@ -32,12 +32,12 @@ namespace Monry.CAFUSample.Presentation.Presenter
 
         public IObservable<Unit> LoadAsObservable()
         {
-            return TriggerRankingLoad.LoadTriggerAsObservable();
+            return TriggerResultListLoad.LoadResultListAsObservable();
         }
 
         public IObservable<Unit> SaveAsObservable()
         {
-            return TriggerRankingSave.SaveRankingAsObservable();
+            return TriggerResultListSave.SaveResultListAsObservable();
         }
 
         public IObservable<Unit> OnNavigateToReplayAsObservable()

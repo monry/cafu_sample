@@ -8,7 +8,6 @@ namespace Monry.CAFUSample.Application
 
             public const string ButtonStart = "ButtonStart";
             public const string ButtonRanking = "ButtonRanking";
-            public const string ButtonSend = "ButtonSend";
             public const string ButtonReplay = "ButtonReplay";
             public const string ButtonFinish = "ButtonFinish";
 
