@@ -4,7 +4,7 @@ using Monry.CAFUSample.Presentation.View.Title;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Scene
 {
     public class TitleInstaller : MonoInstaller<TitleInstaller>
     {

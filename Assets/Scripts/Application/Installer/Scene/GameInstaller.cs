@@ -5,7 +5,7 @@ using Monry.CAFUSample.Presentation.View.Game;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Scene
 {
     public class GameInstaller : MonoInstaller<GameInstaller>
     {

@@ -9,7 +9,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Scene
 {
     public class GameResultInstaller : MonoInstaller<GameResultInstaller>
     {

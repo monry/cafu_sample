@@ -10,7 +10,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Domain
 {
     [CreateAssetMenu(fileName = "RankingInstaller", menuName = "Installers/RankingInstaller")]
     public class RankingInstaller : ScriptableObjectInstaller<RankingInstaller>

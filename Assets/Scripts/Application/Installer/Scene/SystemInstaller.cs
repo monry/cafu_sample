@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Monry.CAFUSample.Application.Installer
+namespace Monry.CAFUSample.Application.Installer.Scene
 {
     // FIXME: 汎用化する
     public class SystemInstaller : MonoInstaller<SystemInstaller>
