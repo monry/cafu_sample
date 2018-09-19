@@ -1,22 +1,27 @@
 using System.Linq;
 using CAFU.Core;
 using Monry.CAFUSample.Domain.Entity;
-using Monry.CAFUSample.Domain.Structure.Data;
 
 namespace Monry.CAFUSample.Domain.Translator
 {
     public class RankingTranslator :
-        ITranslator<IRanking, IRankingEntity>,
-        ITranslator<IRankingEntity, IRanking>
+        ITranslator<Structure.Data.IRanking, IRankingEntity>,
+        ITranslator<IRankingEntity, Structure.Data.IRanking>,
+        ITranslator<IRankingEntity, Structure.Presentation.IRanking>
     {
-        public IRankingEntity Translate(IRanking param1)
+        IRankingEntity ITranslator<Structure.Data.IRanking, IRankingEntity>.Translate(Structure.Data.IRanking param1)
         {
             return new RankingEntity(param1.ResultList.Select(x => new ResultEntity(x.Score, x.PlayerName, x.PlayedAt)).ToList());
         }
 
-        public IRanking Translate(IRankingEntity param1)
+        Structure.Data.IRanking ITranslator<IRankingEntity, Structure.Data.IRanking>.Translate(IRankingEntity param1)
         {
-            return new Ranking(param1.ResultEntityList.Select(x => new Result(x.Score, x.PlayerName, x.PlayedAt)).ToList());
+            return new Structure.Data.Ranking(param1.ResultEntityList.Select(x => new Structure.Data.Result(x.Score, x.PlayerName, x.PlayedAt)).ToList());
+        }
+
+        Structure.Presentation.IRanking ITranslator<IRankingEntity, Structure.Presentation.IRanking>.Translate(IRankingEntity param1)
+        {
+            return new Structure.Presentation.Ranking(param1.ResultEntityList.Select(x => new Structure.Presentation.Result(x.Score, x.PlayerName, x.PlayedAt)).ToList());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public interface IRankingHandler : IPresenter
     {
-        IObservable<Unit> SaveAsObservable();
         IObservable<Unit> LoadAsObservable();
+        IObservable<Unit> SaveAsObservable();
     }
 }

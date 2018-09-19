@@ -30,14 +30,14 @@ namespace Monry.CAFUSample.Presentation.Presenter
             return PlayerNameReceiver.OnReceiveAsObservable();
         }
 
-        public IObservable<Unit> SaveAsObservable()
-        {
-            return TriggerRankingSave.SaveRankingAsObservable();
-        }
-
         public IObservable<Unit> LoadAsObservable()
         {
             return TriggerRankingLoad.LoadTriggerAsObservable();
+        }
+
+        public IObservable<Unit> SaveAsObservable()
+        {
+            return TriggerRankingSave.SaveRankingAsObservable();
         }
 
         public IObservable<Unit> OnNavigateToReplayAsObservable()
