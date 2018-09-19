@@ -15,8 +15,12 @@ namespace Monry.CAFUSample.Presentation.Presenter
         [Inject] private IPlayerNameReceiver PlayerNameReceiver { get; }
         [Inject] private IResultListSaveTrigger TriggerResultListSave { get; }
         [Inject] private IResultListLoadTrigger TriggerResultListLoad { get; }
-        [Inject(Id = Constant.InjectId.ButtonReplay)] private IButtonTrigger TriggerReplay { get; }
-        [Inject(Id = Constant.InjectId.ButtonFinish)] private IButtonTrigger TriggerFinish { get; }
+
+        [Inject(Id = Constant.InjectId.ButtonReplay)]
+        private IButtonTrigger TriggerReplay { get; }
+
+        [Inject(Id = Constant.InjectId.ButtonFinish)]
+        private IButtonTrigger TriggerFinish { get; }
 
         public void RenderResult(IPresentationResult presentationResult)
         {

@@ -12,6 +12,11 @@ namespace Monry.CAFUSample.Presentation.View.GameResult
         [SerializeField] private Button button;
         private Button Button => button ? button : button = GetComponent<Button>();
 
+        private void Start()
+        {
+            Button.OnClickAsObservable().Subscribe(_ => Button.interactable = false);
+        }
+
         IObservable<Unit> IResultListSaveTrigger.SaveResultListAsObservable()
         {
             return Button.OnClickAsObservable();

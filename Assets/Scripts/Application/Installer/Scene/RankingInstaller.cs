@@ -14,12 +14,19 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         [SerializeField] private Result resultPrefab;
         private Result ResultPrefab => resultPrefab;
 
+        [SerializeField] private ButtonBack buttonBack;
+        private ButtonBack ButtonBack => buttonBack;
+
         public override void InstallBindings()
         {
+            // UseCases
             Container.BindInterfacesTo<RankingNavigationUseCase>().AsCached();
 
-            Container.BindInterfacesTo<ResultListPresenter>().AsCached();
+            // Presenters
+            Container.BindInterfacesTo<RankingPresenter>().AsCached();
 
+            // Views
+            Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonBack).FromInstance(ButtonBack).AsCached();
             Container
                 .BindIFactory<IResultRenderer>()
                 .To<Result>()

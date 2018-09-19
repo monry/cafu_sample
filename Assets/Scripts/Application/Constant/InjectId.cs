@@ -10,6 +10,7 @@ namespace Monry.CAFUSample.Application
             public const string ButtonRanking = "ButtonRanking";
             public const string ButtonReplay = "ButtonReplay";
             public const string ButtonFinish = "ButtonFinish";
+            public const string ButtonBack = "ButtonBack";
 
             public const string RankingFileUri = "RankingFileUri";
         }

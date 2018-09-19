@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.UseCase;
 using UniRx;
@@ -7,9 +8,14 @@ using Zenject;
 
 namespace Monry.CAFUSample.Presentation.Presenter
 {
-    public class ResultListPresenter : IRankingRenderable, IResultListHandler
+    public class RankingPresenter :
+        IRankingRenderable,
+        IResultListHandler,
+        IRankingNavigator
     {
         [Inject] private IFactory<IResultRenderer> ResultRendererFactory { get; }
+        [Inject(Id = Constant.InjectId.ButtonBack)]
+        private IButtonTrigger TriggerBack { get; }
 
         public void RenderRanking(IRankingList rankingList)
         {
@@ -24,6 +30,11 @@ namespace Monry.CAFUSample.Presentation.Presenter
         public IObservable<Unit> SaveAsObservable()
         {
             return Observable.Never<Unit>();
+        }
+
+        public IObservable<Unit> OnNavigateToTitleAsObservable()
+        {
+            return TriggerBack.OnTriggerAsObservable();
         }
     }
 }
