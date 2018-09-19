@@ -1,9 +1,8 @@
 using CAFU.Core;
 using Monry.CAFUSample.Domain.Entity;
-using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.Structure.Presentation;
 
-namespace Domain.Translator
+namespace Monry.CAFUSample.Domain.Translator
 {
     public class ResultTranslator : ITranslator<IResultEntity, IResult>
     {

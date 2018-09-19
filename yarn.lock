@@ -18,6 +18,13 @@
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
+"@umm/cafu_data@umm/cafu_data#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/8cb1d62f5061af34389a89d3236f0abe80deedd1"
+  dependencies:
+    "@umm/cafu_core" umm/cafu_core#^3.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+
 "@umm/cafu_scene@umm/cafu_scene#^1.0.0":
   version "1.2.0"
   resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/5bafa806c9709d86930e42ed9dc9beb02539884a"

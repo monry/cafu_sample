@@ -1,5 +1,4 @@
 using System;
-using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.Structure.Presentation;
 using UniRx;
 using IPresenter = CAFU.Core.IPresenter;

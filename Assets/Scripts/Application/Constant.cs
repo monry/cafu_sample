@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Monry.CAFUSample.Application
 {
     public static partial class Constant
@@ -30,5 +32,7 @@ namespace Monry.CAFUSample.Application
         public const float MoleInactiveDurationFrom = 0.0f;
 
         public const float MoleInactiveDurationTo = 5.0f;
+
+        public static readonly string RankingFilePath = Path.Combine("Data", "ranking.bytes");
     }
 }

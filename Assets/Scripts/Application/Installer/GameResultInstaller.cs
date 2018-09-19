@@ -1,10 +1,11 @@
 using CAFU.Core;
-using Domain.Translator;
+using Monry.CAFUSample.Domain.Translator;
 using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Domain.Structure.Presentation;
 using Monry.CAFUSample.Domain.UseCase;
 using Monry.CAFUSample.Presentation.Presenter;
 using Monry.CAFUSample.Presentation.View.GameResult;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,8 @@ namespace Monry.CAFUSample.Application.Installer
 {
     public class GameResultInstaller : MonoInstaller<GameResultInstaller>
     {
+        [SerializeField] private Controller controller;
+        private Controller Controller => controller;
         [SerializeField] private ButtonSend buttonSend;
         private ButtonSend ButtonSend => buttonSend;
         [SerializeField] private ButtonReplay buttonReplay;
@@ -28,6 +31,7 @@ namespace Monry.CAFUSample.Application.Installer
         public override void InstallBindings()
         {
             // Entities
+            Container.Bind<ISubject<IResultEntity>>().FromInstance(new AsyncSubject<IResultEntity>()).AsCached();
             Container.BindIFactory<int, string, IResultEntity>().To<ResultEntity>();
 
             // UseCases
@@ -40,7 +44,8 @@ namespace Monry.CAFUSample.Application.Installer
             Container.BindInterfacesTo<GameResultPresenter>().AsCached();
 
             // Views
-            Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonSend).FromInstance(ButtonSend).AsCached();
+            Container.BindInterfacesTo<Controller>().FromInstance(Controller).AsCached();
+            Container.BindInterfacesTo<ButtonSend>().FromInstance(ButtonSend).AsCached();
             Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonReplay).FromInstance(ButtonReplay).AsCached();
             Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonFinish).FromInstance(ButtonFinish).AsCached();
             Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();

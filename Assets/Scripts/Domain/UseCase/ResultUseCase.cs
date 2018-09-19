@@ -19,17 +19,22 @@ namespace Monry.CAFUSample.Domain.UseCase
         [Inject] private IGameResultHandler GameResultHandler { get; }
         [Inject] private IFactory<int, string, IResultEntity> ResultEntityFactory { get; }
         [Inject] private ITranslator<IResultEntity, IResult> ResultTranslator { get; }
-        private IResultEntity ResultEntity { get; set; }
+        [Inject] private AsyncSubject<IResultEntity> ResultEntitySubject { get; }
 
         void IInitializable.Initialize()
         {
-            ResultEntity = ResultEntityFactory
-                .Create(
-                    ScoreEntity.Current.Value,
-                    PlayerPrefs.GetString(Constant.PlayerPrefsKey.LastPlayerName, string.Empty)
+            ResultEntitySubject
+                .OnNext(
+                    ResultEntityFactory
+                        .Create(
+                            ScoreEntity.Current.Value,
+                            PlayerPrefs.GetString(Constant.PlayerPrefsKey.LastPlayerName, string.Empty)
+                        )
                 );
-            GameResultHandler.RenderResult(ResultTranslator.Translate(ResultEntity));
-            GameResultHandler.UpdatePlayerNameAsObservable().Subscribe(ResultEntity.UpdatePlayerName);
+            ResultEntitySubject.OnCompleted();
+            GameResultHandler.RenderResult(ResultTranslator.Translate(ResultEntitySubject.Value));
+            GameResultHandler.UpdatePlayerNameAsObservable().Subscribe(ResultEntitySubject.Value.UpdatePlayerName);
+            UnityEngine.Debug.Log("ResultUseCase.Initialize()");
         }
     }
 }
