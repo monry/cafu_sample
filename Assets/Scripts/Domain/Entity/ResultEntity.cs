@@ -13,11 +13,11 @@ namespace Monry.CAFUSample.Domain.Entity
 
     public class ResultEntity : IResultEntity
     {
-        public ResultEntity(int score, string playerName, DateTime playedAt = default(DateTime))
+        public ResultEntity(int score, string playerName, DateTime playedAt)
         {
             Score = score;
             PlayerName = playerName;
-            PlayedAt = playedAt == default(DateTime) ? DateTime.Now : playedAt;
+            PlayedAt = playedAt;
         }
 
         public int Score { get; }

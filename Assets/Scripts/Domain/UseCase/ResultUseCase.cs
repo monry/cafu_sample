@@ -1,3 +1,4 @@
+using System;
 using CAFU.Core;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Domain.Entity;
@@ -17,7 +18,7 @@ namespace Monry.CAFUSample.Domain.UseCase
     {
         [Inject] private IScoreEntity ScoreEntity { get; }
         [Inject] private IGameResultHandler GameResultHandler { get; }
-        [Inject] private IFactory<int, string, IResultEntity> ResultEntityFactory { get; }
+        [Inject] private IFactory<int, string, DateTime, IResultEntity> ResultEntityFactory { get; }
         [Inject] private ITranslator<IResultEntity, IResult> ResultTranslator { get; }
         [Inject] private AsyncSubject<IResultEntity> ResultEntitySubject { get; }
 
@@ -28,7 +29,8 @@ namespace Monry.CAFUSample.Domain.UseCase
                     ResultEntityFactory
                         .Create(
                             ScoreEntity.Current.Value,
-                            PlayerPrefs.GetString(Constant.PlayerPrefsKey.LastPlayerName, string.Empty)
+                            PlayerPrefs.GetString(Constant.PlayerPrefsKey.LastPlayerName, string.Empty),
+                            DateTime.Now
                         )
                 );
             ResultEntitySubject.OnCompleted();

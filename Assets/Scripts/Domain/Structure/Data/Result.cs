@@ -8,7 +8,7 @@ namespace Monry.CAFUSample.Domain.Structure.Data
     {
         int Score { get; }
         string PlayerName { get; }
-        DateTime PlayedAt { get; }
+        string PlayedAt { get; }
     }
 
     [Serializable]
@@ -16,9 +16,9 @@ namespace Monry.CAFUSample.Domain.Structure.Data
     {
         [SerializeField] private int score;
         [SerializeField] private string playerName;
-        [SerializeField] private DateTime playedAt;
+        [SerializeField] private string playedAt;
 
-        public Result(int score, string playerName, DateTime playedAt)
+        public Result(int score, string playerName, string playedAt)
         {
             this.score = score;
             this.playerName = playerName;
@@ -27,6 +27,6 @@ namespace Monry.CAFUSample.Domain.Structure.Data
 
         public int Score => score;
         public string PlayerName => playerName;
-        public DateTime PlayedAt => playedAt;
+        public string PlayedAt => playedAt;
     }
 }

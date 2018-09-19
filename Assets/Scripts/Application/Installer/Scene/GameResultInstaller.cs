@@ -1,3 +1,4 @@
+using System;
 using CAFU.Core;
 using Monry.CAFUSample.Domain.Translator;
 using Monry.CAFUSample.Domain.Entity;
@@ -32,7 +33,7 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         {
             // Entities
             Container.Bind<ISubject<IResultEntity>>().FromInstance(new AsyncSubject<IResultEntity>()).AsCached();
-            Container.BindIFactory<int, string, IResultEntity>().To<ResultEntity>();
+            Container.BindIFactory<int, string, DateTime, IResultEntity>().To<ResultEntity>();
 
             // UseCases
             Container.BindInterfacesTo<ResultUseCase>().AsCached();
