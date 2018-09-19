@@ -27,7 +27,6 @@ namespace Monry.CAFUSample.Domain.UseCase
             RankingHandler.LoadAsObservable().Subscribe(_ => Read());
             RankingHandler.SaveAsObservable().Subscribe(_ => Write());
             ResultEntitySubject.Subscribe(AddResult);
-            UnityEngine.Debug.Log("RankingUseCase.Initialize()");
         }
 
         private async void Read()

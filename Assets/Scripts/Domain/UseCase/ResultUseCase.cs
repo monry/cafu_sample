@@ -34,7 +34,6 @@ namespace Monry.CAFUSample.Domain.UseCase
             ResultEntitySubject.OnCompleted();
             GameResultHandler.RenderResult(ResultTranslator.Translate(ResultEntitySubject.Value));
             GameResultHandler.UpdatePlayerNameAsObservable().Subscribe(ResultEntitySubject.Value.UpdatePlayerName);
-            UnityEngine.Debug.Log("ResultUseCase.Initialize()");
         }
     }
 }
