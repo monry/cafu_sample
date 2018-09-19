@@ -11,9 +11,9 @@ namespace Monry.CAFUSample.Presentation.Presenter
     {
         [Inject] private IFactory<IResultRenderer> ResultRendererFactory { get; }
 
-        public void RenderRanking(IPresentationResultList presentationResultList)
+        public void RenderRanking(IRankingList rankingList)
         {
-            presentationResultList.List.ToList().ForEach(x => ResultRendererFactory.Create().Render(0, x));
+            rankingList.List.ToList().ForEach(x => ResultRendererFactory.Create().Render(x));
         }
 
         public IObservable<Unit> LoadAsObservable()

@@ -25,13 +25,13 @@ namespace Monry.CAFUSample.Presentation.View.Ranking
         private Text PlayedAt => playedAt;
         private Text Score => score;
 
-        public void Render(int rankValue, IPresentationResult presentationResult)
+        public void Render(IRanking ranking)
         {
-            Rank.text = rankValue.ToString();
+            Rank.text = ranking.Rank.ToString();
             Background.color = ColorMap[transform.GetSiblingIndex() % 2];
-            PlayerName.text = presentationResult.PlayerName;
-            PlayedAt.text = presentationResult.PlayedAt.ToString("yyyy/MM/dd HH:mm:ss");
-            Score.text = presentationResult.Score.ToString();
+            PlayerName.text = ranking.PresentationResult.PlayerName;
+            PlayedAt.text = ranking.PresentationResult.PlayedAt.ToString("yyyy/MM/dd HH:mm:ss");
+            Score.text = ranking.PresentationResult.Score.ToString();
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public interface IRankingRenderable : IPresenter
     {
-        void RenderRanking(IPresentationResultList presentationResultList);
+        void RenderRanking(IRankingList rankingList);
     }
 }

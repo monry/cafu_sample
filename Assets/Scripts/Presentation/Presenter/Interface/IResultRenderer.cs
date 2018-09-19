@@ -5,6 +5,6 @@ namespace Monry.CAFUSample.Presentation.Presenter
 {
     public interface IResultRenderer : IView
     {
-        void Render(int rank, IPresentationResult presentationResult);
+        void Render(IRanking ranking);
     }
 }
