@@ -41,7 +41,7 @@ MonoBehaviour:
     protectFromUnloading: 0
     loadAsSingle: 0
     preLoadSceneNameList: 0100000003000000
-    postUnloadSceneNameList: 
+    postUnloadSceneNameList: 03000000
   - sceneName: 5
     canLoadMultiple: 0
     protectFromUnloading: 0

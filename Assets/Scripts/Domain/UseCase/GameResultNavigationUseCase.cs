@@ -19,9 +19,8 @@ namespace Monry.CAFUSample.Domain.UseCase
 
         private void NavigateToTitle()
         {
-            UnityEngine.Debug.Log("NavigateToTitle");
             RequestEntity.RequestLoad(SceneName.SampleTitle.ToString());
-            RequestEntity.RequestUnload(SceneName.SampleGame.ToString());
+            RequestEntity.RequestUnload(SceneName.SampleGameResult.ToString());
         }
     }
 }

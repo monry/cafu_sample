@@ -26,7 +26,8 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         public override void InstallBindings()
         {
             // UseCases
-            Container.BindInterfacesTo<ResultNavigationUseCase>().AsCached();
+            Container.BindInterfacesTo<GameResultNavigationUseCase>().AsCached();
+            Container.BindInterfacesTo<ResultHandlingUseCase>().AsCached();
 
             // Presenters
             Container.BindInterfacesTo<GameResultPresenter>().AsCached();
