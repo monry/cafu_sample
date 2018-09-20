@@ -1,4 +1,5 @@
 using CAFU.Core;
+using ExtraUniRx;
 using Monry.CAFUSample.Application;
 using UniRx;
 
@@ -12,7 +13,7 @@ namespace Monry.CAFUSample.Domain.Entity
         ISubject<Unit> WillPauseSubject { get; }
         ISubject<Unit> WillResumeSubject { get; }
         ISubject<Unit> WillFinishSubject { get; }
-        ISubject<Unit> WillAttackSubject { get; }
+        ITenseSubject<int> AttackSubject { get; }
     }
 
     public class GameStateEntity : IGameStateEntity
@@ -23,6 +24,6 @@ namespace Monry.CAFUSample.Domain.Entity
         public ISubject<Unit> WillPauseSubject { get; } = new Subject<Unit>();
         public ISubject<Unit> WillResumeSubject { get; } = new Subject<Unit>();
         public ISubject<Unit> WillFinishSubject { get; } = new Subject<Unit>();
-        public ISubject<Unit> WillAttackSubject { get; } = new Subject<Unit>();
+        public ITenseSubject<int> AttackSubject { get; } = new TenseSubject<int>();
     }
 }

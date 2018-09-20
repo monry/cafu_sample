@@ -4,9 +4,9 @@ using Monry.CAFUSample.Domain.Structure;
 
 namespace Monry.CAFUSample.Domain.Translator
 {
-    public class MoleTranslator : ITranslator<IMoleEntity, IMole>
+    public class MoleTranslator : ITranslator<IMoleEntity, IGameStateEntity, IMole>
     {
-        public IMole Translate(IMoleEntity param1)
+        public IMole Translate(IMoleEntity param1, IGameStateEntity param2)
         {
             // BindIFactory は型パラメータ 0〜6, 10個 という制限あり
             return new Mole(
@@ -16,7 +16,7 @@ namespace Monry.CAFUSample.Domain.Translator
                     param1.HideSubject,
                     param1.FeintSubject,
                     param1.HitSubject,
-                    param1.AttackSubject
+                    param2.AttackSubject
                 );
         }
     }

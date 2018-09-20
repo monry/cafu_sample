@@ -1,3 +1,4 @@
+using ExtraUniRx;
 using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.Translator;
@@ -14,6 +15,8 @@ namespace Monry.CAFUSample.Application.Installer.Scene
     {
         [SerializeField] private Mole molePrefab;
         private Mole MolePrefab => molePrefab;
+        [SerializeField] private Hammer hammerPrefab;
+        private Hammer HammerPrefab => hammerPrefab;
 
         [SerializeField] private Transform moleParent;
         private Transform MoleParent => moleParent;
@@ -35,10 +38,12 @@ namespace Monry.CAFUSample.Application.Installer.Scene
             // UseCases
             Container.BindInterfacesTo<GameStateUseCase>().AsCached();
             Container.BindInterfacesTo<MoleUseCase>().AsCached();
+            Container.BindInterfacesTo<HammerUseCase>().AsCached();
 
             // Presenters
             Container.BindInterfacesTo<GamePresenter>().AsCached();
             Container.BindInterfacesTo<MolePresenter>().AsCached();
+            Container.BindInterfacesTo<HammerPresenter>().AsCached();
 
             // Views
             Container.BindInterfacesTo<Score>().FromInstance(Score).AsCached();
@@ -51,6 +56,10 @@ namespace Monry.CAFUSample.Application.Installer.Scene
                 .FromComponentInNewPrefab(MolePrefab)
                 // MoleParent の配下に
                 .UnderTransform(MoleParent);
+            Container
+                .BindIFactory<int, ITenseSubject<int>, Transform, IHammer>()
+                .To<Hammer>()
+                .FromComponentInNewPrefab(HammerPrefab);
         }
     }
 }

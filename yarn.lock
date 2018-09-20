@@ -50,6 +50,13 @@
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
+"@umm/extra_unirx@umm/extra_unirx#^1.0.0":
+  version "1.3.4"
+  resolved "https://codeload.github.com/umm/extra_unirx/tar.gz/3911070178213219fb5b6606f55c20bc9ff4d9fc"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
 "@umm/moq@umm/moq#^1.0.0":
   version "1.0.0"
   resolved "https://codeload.github.com/umm/moq/tar.gz/5c3b47795a773b637a98e13c534236fb927a5bda"

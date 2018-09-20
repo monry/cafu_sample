@@ -92,9 +92,10 @@ namespace Monry.CAFUSample.Domain.Entity
             ShowSubject.WhenDid().Subscribe(_ => ActivateSubject.OnNext(Unit.Default));
             // 消去が始まったら当たり判定を無効にする
             HideSubject.WhenWill().Subscribe(_ => DeactivateSubject.OnNext(Unit.Default));
+            // フェイントが終わったら当たり判定を無効にする
+            FeintSubject.WhenDid().Subscribe(_ => DeactivateSubject.OnNext(Unit.Default));
             // 攻撃が始まったら当たり判定を無効にする
             AttackSubject.WhenWill().Subscribe(_ => DeactivateSubject.OnNext(Unit.Default));
-            AttackSubject.WhenDid().Subscribe(_ => HitSubject.Do());
         }
     }
 }

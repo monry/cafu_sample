@@ -1,6 +1,7 @@
 using System;
 using CAFU.Core;
 using CAFU.Scene.Domain.Entity;
+using ExtraUniRx;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Application.Enumerate;
 using Monry.CAFUSample.Domain.Entity;
@@ -41,7 +42,7 @@ namespace Monry.CAFUSample.Domain.UseCase
             GameStateEntity.WillPauseSubject.Subscribe(_ => PauseGame());
             GameStateEntity.WillResumeSubject.Subscribe(_ => ResumeGame());
             GameStateEntity.WillFinishSubject.Subscribe(_ => FinishGame());
-            GameStateEntity.WillAttackSubject.Subscribe(_ => ScoreEntity.Increment());
+            GameStateEntity.AttackSubject.WhenDid().Subscribe(_ => ScoreEntity.Increment());
 
             Observable
                 .Timer(TimeSpan.FromSeconds(1.0))

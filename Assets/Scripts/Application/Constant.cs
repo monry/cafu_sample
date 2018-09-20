@@ -12,6 +12,7 @@ namespace Monry.CAFUSample.Application
                 public const string Hide = "Hide";
                 public const string Hit = "Hit";
                 public const string Feint = "Feint";
+                public const string Attack = "Attack";
             }
             public static class AnimationStateName
             {
@@ -19,13 +20,14 @@ namespace Monry.CAFUSample.Application
                 public const string Hide = "Hide";
                 public const string Hit = "Hit";
                 public const string Feint = "Feint";
+                public const string Attack = "Attack";
             }
         }
 
 
         public const int MoleAmount = 10;
 
-        public const float RemainingTime = 5.0f;
+        public const float RemainingTime = 30.0f;
 
         public const float MoleActiveDuration = 1.5f;
 

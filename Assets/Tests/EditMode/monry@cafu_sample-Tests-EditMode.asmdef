@@ -3,6 +3,7 @@
     "references": [
         "monry@cafu_sample",
         "umm@cafu_core@v3",
+        "umm@extra_unirx",
         "umm@unirx",
         "Zenject",
         "Zenject-Editor-Testing",

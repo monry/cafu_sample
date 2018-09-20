@@ -1,6 +1,7 @@
+using System;
+using ExtraUniRx;
 using Monry.CAFUSample.Domain.UseCase;
 using NUnit.Framework;
-using UniRx;
 using Zenject;
 
 namespace Monry.CAFUSample.Domain.Entity
@@ -29,9 +30,9 @@ namespace Monry.CAFUSample.Domain.Entity
             var scoreEntity = Container.Resolve<IScoreEntity>();
 
             Assert.AreEqual(0, scoreEntity.Current.Value);
-            gameStateEntity.WillAttackSubject.OnNext(Unit.Default);
+            gameStateEntity.AttackSubject.Do(0);
             Assert.AreEqual(1, scoreEntity.Current.Value);
-            gameStateEntity.WillAttackSubject.OnNext(Unit.Default);
+            gameStateEntity.AttackSubject.Do(0);
             Assert.AreEqual(2, scoreEntity.Current.Value);
         }
     }

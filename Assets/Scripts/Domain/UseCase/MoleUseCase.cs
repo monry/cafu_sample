@@ -1,4 +1,5 @@
 using CAFU.Core;
+using ExtraUniRx;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Domain.Structure;
@@ -15,7 +16,7 @@ namespace Monry.CAFUSample.Domain.UseCase
     {
         [Inject] private IFactory<int, IMoleEntity> MoleEntityFactory { get; }
 
-        [Inject] private ITranslator<IMoleEntity, IMole> MoleStructureFactory { get; }
+        [Inject] private ITranslator<IMoleEntity, IGameStateEntity, IMole> MoleStructureTranslator { get; }
 
         [Inject] private IMolePresenter MolePresenter { get; }
 
@@ -36,11 +37,18 @@ namespace Monry.CAFUSample.Domain.UseCase
         private void InitializeMole(IMoleEntity moleEntity)
         {
             // View の生成
-            MolePresenter.Instantiate(moleEntity.Index, MoleStructureFactory.Translate(moleEntity));
+            MolePresenter.Instantiate(moleEntity.Index, MoleStructureTranslator.Translate(moleEntity, GameStateEntity));
 
             // ゲーム全体のステータスに連動した処理を登録
             GameStateEntity.WillStartSubject.Subscribe(_ => moleEntity.Start());
             GameStateEntity.WillFinishSubject.Subscribe(_ => moleEntity.Finish());
+
+            // 自身のインデックスと同じ
+            GameStateEntity
+                .AttackSubject
+                .WhenDid()
+                .Where(x => x == moleEntity.Index)
+                .Subscribe(_ => moleEntity.HitSubject.Do());
         }
     }
 }
