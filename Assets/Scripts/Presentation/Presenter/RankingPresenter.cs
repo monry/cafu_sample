@@ -11,11 +11,16 @@ namespace Monry.CAFUSample.Presentation.Presenter
     public class RankingPresenter :
         IRankingRenderable,
         IResultListHandler,
+        IResultListClearable,
         IRankingNavigator
     {
         [Inject] private IFactory<IResultRenderer> ResultRendererFactory { get; }
+
         [Inject(Id = Constant.InjectId.ButtonBack)]
         private IButtonTrigger TriggerBack { get; }
+
+        [Inject(Id = Constant.InjectId.ButtonClear)]
+        private IButtonTrigger TriggerClear { get; }
 
         public void RenderRanking(IRankingList rankingList)
         {
@@ -35,6 +40,11 @@ namespace Monry.CAFUSample.Presentation.Presenter
         public IObservable<Unit> OnNavigateToTitleAsObservable()
         {
             return TriggerBack.OnTriggerAsObservable();
+        }
+
+        public IObservable<Unit> ClearAsObservable()
+        {
+            return TriggerClear.OnTriggerAsObservable();
         }
     }
 }

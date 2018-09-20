@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using CAFU.Core;
 using CAFU.Data.Data.UseCase;
 using CAFU.Data.Utility;
@@ -14,9 +13,10 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public class ResultUseCase : IUseCase, IInitializable
     {
-        [Inject(Id = Constant.InjectId.RankingFileUri)] private Uri RankingFileUri { get; }
+        [Inject(Id = Constant.InjectId.ResultListFileUri)] private Uri ResultListFileUri { get; }
         [Inject] private IResultListHandler ResultListHandler { get; }
-        [Inject] private IAsyncRWHandler AsyncRWHandler { get; }
+        [InjectOptional] private IResultListClearable ResultListClearable { get; }
+        [Inject] private IAsyncCRUDHandler AsyncCRUDHandler { get; }
         [Inject] private ITranslator<IResultListEntity, IDataResultList> DataResultListStructureTranslator { get; }
         [Inject] private ITranslator<IDataResultList, IResultListEntity> ResultListEntityTranslator { get; }
         [Inject] private AsyncSubject<IResultEntity> ResultEntitySubject { get; }
@@ -27,22 +27,20 @@ namespace Monry.CAFUSample.Domain.UseCase
         {
             ResultListHandler.LoadAsObservable().Subscribe(_ => Read());
             ResultListHandler.SaveAsObservable().Subscribe(_ => Write());
+            ResultListClearable?.ClearAsObservable().Subscribe(_ => Clear());
             ResultEntitySubject.Subscribe(AddResult);
         }
 
         private async void Read()
         {
-            try
+            // 存在しない場合、一旦空ファイルを作る
+            if (!AsyncCRUDHandler.Exists(ResultListFileUri))
             {
-                var bytes = await AsyncRWHandler.ReadAsync(RankingFileUri);
-                RankingEntitySubject.OnNext(ResultListEntityTranslator.Translate(bytes.FromByteArray<DataResultList>()));
-                RankingEntitySubject.OnCompleted();
+                await AsyncCRUDHandler.CreateAsync(ResultListFileUri, ResultListEntityFactory.Create(new List<IResultEntity>()).ToByteArray());
             }
-            catch (FileNotFoundException)
-            {
-                RankingEntitySubject.OnNext(ResultListEntityFactory.Create(new List<IResultEntity>()));
-                RankingEntitySubject.OnCompleted();
-            }
+            var bytes = await AsyncCRUDHandler.ReadAsync(ResultListFileUri);
+            RankingEntitySubject.OnNext(ResultListEntityTranslator.Translate(bytes.FromByteArray<DataResultList>()));
+            RankingEntitySubject.OnCompleted();
         }
 
         private async void Write()
@@ -50,7 +48,12 @@ namespace Monry.CAFUSample.Domain.UseCase
             // 念のため ResultListEntity の生成準備を待つ
             await RankingEntitySubject;
             var ranking = DataResultListStructureTranslator.Translate(RankingEntitySubject.Value);
-            await AsyncRWHandler.WriteAsync(RankingFileUri, ranking.ToByteArray());
+            await AsyncCRUDHandler.UpdateAsync(ResultListFileUri, ranking.ToByteArray());
+        }
+
+        private async void Clear()
+        {
+            await AsyncCRUDHandler.DeleteAsync(ResultListFileUri);
         }
 
         private async void AddResult(IResultEntity resultEntity)

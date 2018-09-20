@@ -17,6 +17,9 @@ namespace Monry.CAFUSample.Application.Installer.Scene
         [SerializeField] private ButtonBack buttonBack;
         private ButtonBack ButtonBack => buttonBack;
 
+        [SerializeField] private ButtonClear buttonClear;
+        private ButtonClear ButtonClear => buttonClear;
+
         public override void InstallBindings()
         {
             // UseCases
@@ -27,6 +30,7 @@ namespace Monry.CAFUSample.Application.Installer.Scene
 
             // Views
             Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonBack).FromInstance(ButtonBack).AsCached();
+            Container.Bind<IButtonTrigger>().WithId(Constant.InjectId.ButtonClear).FromInstance(ButtonClear).AsCached();
             Container
                 .BindIFactory<IResultRenderer>()
                 .To<Result>()

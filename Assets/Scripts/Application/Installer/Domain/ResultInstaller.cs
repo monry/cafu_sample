@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using CAFU.Data.Data.DataStore;
 using CAFU.Data.Data.Repository;
-using CAFU.Data.Data.UseCase;
 using Monry.CAFUSample.Domain.Entity;
 using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Domain.Translator;
@@ -33,7 +32,7 @@ namespace Monry.CAFUSample.Application.Installer.Domain
             Container.BindInterfacesTo<ResultUseCase>().AsCached();
 
             // Repositories
-            Container.Bind<IAsyncRWHandler>().To<AsyncRWRepository>().AsCached();
+            Container.BindInterfacesTo<AsyncCRUDRepository>().AsCached();
 
             // DataStores
             Container.BindInterfacesTo<AsyncLocalStorageDataStore>().AsCached();
@@ -50,7 +49,7 @@ namespace Monry.CAFUSample.Application.Installer.Domain
                         Path = Path.Combine(UnityEngine.Application.persistentDataPath, Constant.ResultListFilePath),
                     }.Uri
                 )
-                .WithId(Constant.InjectId.RankingFileUri)
+                .WithId(Constant.InjectId.ResultListFileUri)
                 .AsSingle();
         }
     }
