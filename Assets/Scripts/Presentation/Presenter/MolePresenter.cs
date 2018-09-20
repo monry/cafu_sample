@@ -7,28 +7,13 @@ namespace Monry.CAFUSample.Presentation.Presenter
 {
     public class MolePresenter : IMolePresenter
     {
-        [Inject] private IFactory<int, IMoleView> MoleViewFactory { get; }
+        [Inject] private IFactory<int, IMole, IMoleView> MoleViewFactory { get; }
 
         private List<IMoleView> MoleViewList { get; } = new List<IMoleView>();
 
-        public void Instantiate(int index)
+        public void Instantiate(int index, IMole mole)
         {
-            MoleViewList.Add(MoleViewFactory.Create(index));
-        }
-
-        public IMoleStateStructure GenerateStateStructure(int index)
-        {
-            return MoleViewList[index].GenerateStateStructure();
-        }
-
-        public IMoleActivationStructure GenerateActivationStructure(int index)
-        {
-            return MoleViewList[index].GenerateActivationStructure();
-        }
-
-        public IMoleAttackStructure GenerateAttackStructure(int index)
-        {
-            return MoleViewList[index].GenerateAttackStructure();
+            MoleViewList.Add(MoleViewFactory.Create(index, mole));
         }
     }
 }

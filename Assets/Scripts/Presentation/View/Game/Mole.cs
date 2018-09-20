@@ -1,4 +1,5 @@
 using System;
+using ExtraUniRx;
 using Monry.CAFUSample.Domain.Structure;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Presentation.Presenter;
@@ -35,50 +36,32 @@ namespace Monry.CAFUSample.Presentation.View.Game
         private Collider2D _collider2D;
         private Collider2D Collider2D => _collider2D ? _collider2D : (_collider2D = GetComponentInChildren<Collider2D>());
 
-        [Inject] private int Index { get; }
-
-        protected override void Awake()
+        [Inject]
+        private void Initialize(int index, IMole mole)
         {
-            base.Awake();
+            mole.ShowSubject.WhenDo().Subscribe(_ => Animator.SetTrigger(Constant.Animator.TriggerName.Show));
+            mole.HideSubject.WhenDo().Subscribe(_ => Animator.SetTrigger(Constant.Animator.TriggerName.Hide));
+            mole.FeintSubject.WhenDo().Subscribe(_ => Animator.SetTrigger(Constant.Animator.TriggerName.Feint));
+            mole.HitSubject.WhenDo().Subscribe(_ => Animator.SetTrigger(Constant.Animator.TriggerName.Hit));
+            Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Show).Subscribe(_ => mole.ShowSubject.Will());
+            Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hide).Subscribe(_ => mole.HideSubject.Will());
+            Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Feint).Subscribe(_ => mole.FeintSubject.Will());
+            Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hit).Subscribe(_ => mole.HitSubject.Will());
+            Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Show).Subscribe(_ => mole.ShowSubject.Did());
+            Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hide).Subscribe(_ => mole.HideSubject.Did());
+            Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Feint).Subscribe(_ => mole.FeintSubject.Did());
+            Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hit).Subscribe(_ => mole.HitSubject.Did());
 
+            mole.ActivateSubject.Subscribe(_ => Collider2D.enabled = true);
+            mole.DeactivateSubject.Subscribe(_ => Collider2D.enabled = false);
+
+            this.OnPointerDownAsObservable().Subscribe(_ => mole.AttackSubject.Do(index));
             transform.localPosition = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(-4.5f, 4.5f), 0.0f);
         }
 
-        public IMoleStateStructure GenerateStateStructure()
+        public Transform GetTransform()
         {
-            return new MoleStateStructure
-            {
-                Show = () => Animator.SetTrigger(Constant.Animator.TriggerName.Show),
-                Hide = () => Animator.SetTrigger(Constant.Animator.TriggerName.Hide),
-                Feint = () => Animator.SetTrigger(Constant.Animator.TriggerName.Feint),
-                Hit = () => Animator.SetTrigger(Constant.Animator.TriggerName.Hit),
-                WillShowObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable(),
-                WillHideObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable(),
-                WillFeintObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable(),
-                WillHitObservable = Animator.OnDispatchBeginAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable(),
-                DidShowObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Show).AsUnitObservable(),
-                DidHideObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hide).AsUnitObservable(),
-                DidFeintObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Feint).AsUnitObservable(),
-                DidHitObservable = Animator.OnDispatchEndAsObservable(Constant.Animator.AnimationStateName.Hit).AsUnitObservable(),
-            };
-        }
-
-        public IMoleActivationStructure GenerateActivationStructure()
-        {
-            return new MoleActivationStructure
-            {
-                Activate = () => Collider2D.enabled = true,
-                Deactivate = () => Collider2D.enabled = false,
-            };
-        }
-
-        public IMoleAttackStructure GenerateAttackStructure()
-        {
-            return new MoleAttackStructure
-            {
-                CanAttack = () => Collider2D.enabled,
-                AttackObservable = this.OnPointerDownAsObservable().AsUnitObservable(),
-            };
+            return transform;
         }
     }
 }

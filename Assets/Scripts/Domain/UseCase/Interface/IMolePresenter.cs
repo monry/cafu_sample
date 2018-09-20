@@ -5,10 +5,6 @@ namespace Monry.CAFUSample.Domain.UseCase
 {
     public interface IMolePresenter : IPresenter
     {
-        void Instantiate(int index);
-
-        IMoleStateStructure GenerateStateStructure(int index);
-        IMoleActivationStructure GenerateActivationStructure(int index);
-        IMoleAttackStructure GenerateAttackStructure(int index);
+        void Instantiate(int index, IMole mole);
     }
 }

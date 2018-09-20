@@ -1,17 +1,21 @@
+using CAFU.Core;
 using Monry.CAFUSample.Application;
 using Monry.CAFUSample.Domain.Entity;
+using Monry.CAFUSample.Domain.Structure;
 using UniRx;
 using Zenject;
 
 namespace Monry.CAFUSample.Domain.UseCase
 {
-    public interface IMoleUseCase
+    public interface IMoleUseCase : IUseCase
     {
     }
 
     public class MoleUseCase : IMoleUseCase, IInitializable
     {
         [Inject] private IFactory<int, IMoleEntity> MoleEntityFactory { get; }
+
+        [Inject] private ITranslator<IMoleEntity, IMole> MoleStructureFactory { get; }
 
         [Inject] private IMolePresenter MolePresenter { get; }
 
@@ -32,40 +36,11 @@ namespace Monry.CAFUSample.Domain.UseCase
         private void InitializeMole(IMoleEntity moleEntity)
         {
             // View の生成
-            MolePresenter.Instantiate(moleEntity.Index);
+            MolePresenter.Instantiate(moleEntity.Index, MoleStructureFactory.Translate(moleEntity));
 
             // ゲーム全体のステータスに連動した処理を登録
             GameStateEntity.WillStartSubject.Subscribe(_ => moleEntity.Start());
             GameStateEntity.WillFinishSubject.Subscribe(_ => moleEntity.Finish());
-
-            var moleStateStructure = MolePresenter.GenerateStateStructure(moleEntity.Index);
-            var moleActivationStructure = MolePresenter.GenerateActivationStructure(moleEntity.Index);
-            var moleAttackStructure = MolePresenter.GenerateAttackStructure(moleEntity.Index);
-
-            // 処理実行の処理を登録
-            moleEntity.Show = () => moleStateStructure.Show();
-            moleEntity.Hide = () => moleStateStructure.Hide();
-            moleEntity.Feint = () => moleStateStructure.Feint();
-            moleEntity.Hit = () => moleStateStructure.Hit();
-            moleEntity.CanAttack = () => moleAttackStructure.CanAttack();
-
-            // 有効無効切り替え時の処理を登録
-            moleEntity.DidActiveSubject.Subscribe(_ => moleActivationStructure.Activate());
-            moleEntity.WillInactiveSubject.Subscribe(_ => moleActivationStructure.Deactivate());
-
-            // アニメーション後の処理を登録
-            moleStateStructure.WillShowObservable.Subscribe(moleEntity.WillActiveSubject);
-            moleStateStructure.WillHideObservable.Subscribe(moleEntity.WillInactiveSubject);
-            moleStateStructure.WillFeintObservable.Subscribe(moleEntity.WillInactiveSubject);
-            moleStateStructure.WillHitObservable.Subscribe(moleEntity.WillInactiveSubject);
-            moleStateStructure.DidShowObservable.Subscribe(moleEntity.DidActiveSubject);
-            moleStateStructure.DidHideObservable.Subscribe(moleEntity.DidInactiveSubject);
-            moleStateStructure.DidFeintObservable.Subscribe(moleEntity.DidInactiveSubject);
-            moleStateStructure.DidHitObservable.Subscribe(); // 即時 Hide に流れるので何もしない
-
-            // 攻撃時の処理を登録
-            moleAttackStructure.AttackObservable.Subscribe(_ => moleEntity.Hit());
-            moleAttackStructure.AttackObservable.Subscribe(GameStateEntity.WillAttackSubject);
         }
     }
 }

@@ -7,6 +7,7 @@
         "umm@cafu_scene",
         "umm@cafu_zenject",
         "umm@extra_linq",
+        "umm@extra_unirx",
         "umm@unirx",
         "Zenject"
     ],
