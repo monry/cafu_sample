@@ -13,7 +13,7 @@ namespace Monry.CAFUSample.Domain.UseCase
     {
     }
 
-    public class ResultNavigationUseCase : IResultUseCase,
+    public class ResultHandlingUseCase : IResultUseCase,
         IInitializable
     {
         [Inject] private IScoreEntity ScoreEntity { get; }
