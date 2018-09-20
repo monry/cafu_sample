@@ -19,8 +19,8 @@
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
 "@umm/cafu_data@umm/cafu_data#^1.0.0":
-  version "1.0.0"
-  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/8cb1d62f5061af34389a89d3236f0abe80deedd1"
+  version "1.1.0"
+  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/cdb9b3d9194def174bde3ef71b80e43b22a9aca5"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/scripts" umm/scripts#^1.0.0
@@ -90,8 +90,8 @@
     "@umm/unirx" umm/unirx#^2.0.0
 
 "@umm/zenject@umm/zenject#^2.0.0":
-  version "2.1.1"
-  resolved "https://codeload.github.com/umm/zenject/tar.gz/d21ab2e6454577af81f29e4d4a89ae0397bfe724"
+  version "2.1.2"
+  resolved "https://codeload.github.com/umm/zenject/tar.gz/7d4350b639a15d4a912396a4a70a32093e867b7d"
   dependencies:
     "@umm/moq" umm/moq#^1.0.0
     "@umm/scripts" umm/scripts#^1.0.0
