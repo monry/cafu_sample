@@ -5,6 +5,7 @@
         "umm@cafu_core@v3",
         "umm@extra_unirx",
         "umm@unirx",
+        "umm@unirx_tense",
         "Zenject",
         "Zenject-Editor-Testing",
         "Zenject-OptionalExtras-Editor"

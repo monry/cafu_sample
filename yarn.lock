@@ -96,6 +96,14 @@
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
 
+"@umm/unirx_tense@umm/unirx_tense#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/unirx_tense/tar.gz/19ab4aa4f722045fba12c23e9fd1ac66e663ee13"
+  dependencies:
+    "@umm/extra_unirx" umm/extra_unirx#^1.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
 "@umm/zenject@umm/zenject#^2.0.0":
   version "2.1.2"
   resolved "https://codeload.github.com/umm/zenject/tar.gz/7d4350b639a15d4a912396a4a70a32093e867b7d"

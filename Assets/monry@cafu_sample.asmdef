@@ -9,6 +9,7 @@
         "umm@extra_linq",
         "umm@extra_unirx",
         "umm@unirx",
+        "umm@unirx_tense",
         "Zenject"
     ],
     "optionalUnityReferences": [],
