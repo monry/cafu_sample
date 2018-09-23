@@ -2,25 +2,90 @@
 # yarn lockfile v1
 
 
-"@umm/cafu_core@umm/cafu_core#^2.0.0":
-  version "2.7.2"
-  resolved "https://codeload.github.com/umm/cafu_core/tar.gz/efc0aee5158f42ef68fb978f7e9b61d676cf8678"
+"@umm/animationevent_dispatcher@umm/animationevent_dispatcher#^1.0.0":
+  version "1.4.1"
+  resolved "https://codeload.github.com/umm/animationevent_dispatcher/tar.gz/351f7a017721cca50df709f86f2c44f57030c5b8"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/singleton_audiolistener" umm/singleton_audiolistener#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
+"@umm/cafu_core@umm/cafu_core#^3.0.0":
+  version "3.0.0"
+  resolved "https://codeload.github.com/umm/cafu_core/tar.gz/6dabb8acd8e92d11745caa5b33fe4183cb25c47c"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
+"@umm/cafu_data@umm/cafu_data#^1.0.0":
+  version "1.1.0"
+  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/cdb9b3d9194def174bde3ef71b80e43b22a9aca5"
+  dependencies:
+    "@umm/cafu_core" umm/cafu_core#^3.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+
+"@umm/cafu_scene@umm/cafu_scene#^1.0.0":
+  version "1.2.0"
+  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/5bafa806c9709d86930e42ed9dc9beb02539884a"
+  dependencies:
+    "@umm/cafu_core" umm/cafu_core#^3.0.0
+    "@umm/cafu_zenject" umm/cafu_zenject#^1.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+    "@umm/zenject" umm/zenject#^2.0.0
+
+"@umm/cafu_zenject@umm/cafu_zenject#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/cafu_zenject/tar.gz/ec662a3fa1749b4e094e770c8703864314b9eaf0"
+  dependencies:
+    "@umm/cafu_core" umm/cafu_core#^3.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+    "@umm/zenject" umm/zenject#^2.0.0
+
+"@umm/extra_linq@umm/extra_linq#^1.0.0":
+  version "1.2.1"
+  resolved "https://codeload.github.com/umm/extra_linq/tar.gz/95da91186d202ceb246b093edea2c0a8d5fdf512"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
+"@umm/extra_unirx@umm/extra_unirx#^1.0.0":
+  version "1.3.4"
+  resolved "https://codeload.github.com/umm/extra_unirx/tar.gz/3911070178213219fb5b6606f55c20bc9ff4d9fc"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
+"@umm/moq@umm/moq#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/moq/tar.gz/5c3b47795a773b637a98e13c534236fb927a5bda"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
 "@umm/scripts@umm/scripts#^1.0.0":
-  version "1.3.3"
-  resolved "https://codeload.github.com/umm/scripts/tar.gz/4ab3f9359c3a0964e120a7dd22f30cf1779bf614"
+  version "1.3.6"
+  resolved "https://codeload.github.com/umm/scripts/tar.gz/361d119fd6f4dfa578533e25eeae44102287bd4c"
   dependencies:
     glob "^7.1.2"
     ignore-walk "^3.0.1"
     mkdirp "^0.5.1"
 
+"@umm/singleton_audiolistener@umm/singleton_audiolistener#^1.0.0":
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/singleton_audiolistener/tar.gz/aa7c0e12880cf9e98b70bb1f5cb04cb2b878dfb9"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
+"@umm/singleton_eventsystem@umm/singleton_eventsystem#^1.0.0":
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/singleton_eventsystem/tar.gz/ea2a7daec15dee3d26ad4ebaf5bac44b82371431"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+
 "@umm/unirx@umm/unirx#^2.0.0":
-  version "2.1.1"
-  resolved "https://codeload.github.com/umm/unirx/tar.gz/74ac39b045cd9a12a5c8f99e1301abeff597348c"
+  version "2.1.2"
+  resolved "https://codeload.github.com/umm/unirx/tar.gz/06b8c930847ea4c86c0f7c2409d5bfc4a8409e45"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
@@ -31,11 +96,27 @@
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
 
-"@umm/zenject@umm/zenject#^1.0.0":
-  version "1.0.1"
-  resolved "https://codeload.github.com/umm/zenject/tar.gz/59d977a8a6af98510abf9bbac83f6fb91cdb6de2"
+"@umm/unirx_tense@umm/unirx_tense#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/unirx_tense/tar.gz/19ab4aa4f722045fba12c23e9fd1ac66e663ee13"
+  dependencies:
+    "@umm/extra_unirx" umm/extra_unirx#^1.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
+"@umm/zenject@umm/zenject#^2.0.0":
+  version "2.1.2"
+  resolved "https://codeload.github.com/umm/zenject/tar.gz/7d4350b639a15d4a912396a4a70a32093e867b7d"
+  dependencies:
+    "@umm/moq" umm/moq#^1.0.0
+    "@umm/scripts" umm/scripts#^1.0.0
+
+"@umm/zenject_uiscene@umm/zenject_uiscene#^1.0.0":
+  version "1.0.0"
+  resolved "https://codeload.github.com/umm/zenject_uiscene/tar.gz/933648b1d960142e0d5316a3c0b6f2184ac47381"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/zenject" umm/zenject#^2.0.0
 
 balanced-match@^1.0.0:
   version "1.0.0"
