@@ -3,8 +3,8 @@
 
 
 "@umm/animationevent_dispatcher@umm/animationevent_dispatcher#^1.0.0":
-  version "1.4.1"
-  resolved "https://codeload.github.com/umm/animationevent_dispatcher/tar.gz/351f7a017721cca50df709f86f2c44f57030c5b8"
+  version "1.4.2"
+  resolved "https://codeload.github.com/umm/animationevent_dispatcher/tar.gz/5a83e3bf3cfdff5e54b9323c1316112145fde2ff"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/singleton_audiolistener" umm/singleton_audiolistener#^1.0.0
@@ -26,11 +26,12 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/cafu_scene@umm/cafu_scene#^1.0.0":
-  version "1.2.0"
-  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/5bafa806c9709d86930e42ed9dc9beb02539884a"
+  version "1.2.1"
+  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/762a81eb9fd4c0758444ecc9950ffc1ca8f04911"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/cafu_zenject" umm/cafu_zenject#^1.0.0
+    "@umm/element_title_attribute" umm/element_title_attribute#^1.0.0
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
     "@umm/zenject" umm/zenject#^2.0.0
@@ -51,8 +52,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/extra_linq@umm/extra_linq#^1.0.0":
-  version "1.2.1"
-  resolved "https://codeload.github.com/umm/extra_linq/tar.gz/95da91186d202ceb246b093edea2c0a8d5fdf512"
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/extra_linq/tar.gz/c531078cf920495f8dfc71506ca345669a9af1ea"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
@@ -70,8 +71,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/scripts@umm/scripts#^1.0.0":
-  version "1.3.6"
-  resolved "https://codeload.github.com/umm/scripts/tar.gz/361d119fd6f4dfa578533e25eeae44102287bd4c"
+  version "1.4.1"
+  resolved "https://codeload.github.com/umm/scripts/tar.gz/53d1def490dbb897b27b84e918c6be8e4f50d958"
   dependencies:
     glob "^7.1.2"
     ignore-walk "^3.0.1"
@@ -96,8 +97,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/unirx_observablelifecyclemonobehaviour@umm/unirx_observablelifecyclemonobehaviour#^1.0.0":
-  version "1.2.1"
-  resolved "https://codeload.github.com/umm/unirx_observablelifecyclemonobehaviour/tar.gz/8bcf6586ad25683856cb259dae72a723cf05bc5d"
+  version "1.2.2"
+  resolved "https://codeload.github.com/umm/unirx_observablelifecyclemonobehaviour/tar.gz/609d94fe31f081a7045014ca95d0c248cc925621"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
@@ -148,9 +149,9 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 glob@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
-  integrity sha512-MJTUg1kjuLeQCJ+ccE4Vpa6kKVXkPYJ2mOCQyUuKLcLQsdrMCpBPUi8qVE6+YuaJkozeA9NusTAw3hLr8Xe5EQ==
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
