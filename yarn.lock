@@ -118,8 +118,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/zenject_uiscene@umm/zenject_uiscene#^1.0.0":
-  version "1.0.0"
-  resolved "https://codeload.github.com/umm/zenject_uiscene/tar.gz/933648b1d960142e0d5316a3c0b6f2184ac47381"
+  version "1.0.1"
+  resolved "https://codeload.github.com/umm/zenject_uiscene/tar.gz/186f535e83af891861c317026ecd1fb2b03730e7"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/zenject" umm/zenject#^2.0.0
