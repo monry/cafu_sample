@@ -28,6 +28,7 @@
     "@umm/cafu_core": "umm/cafu_core#^3.0.0",
     "@umm/cafu_data": "umm/cafu_data#^1.0.0",
     "@umm/cafu_scene": "umm/cafu_scene#^1.0.0",
+    "@umm/element_title_attribute": "umm/element_title_attribute#^1.0.0",
     "@umm/extra_linq": "umm/extra_linq#^1.0.0",
     "@umm/extra_unirx": "umm/extra_unirx#^1.0.0",
     "@umm/scripts": "umm/scripts#^1.0.0",
