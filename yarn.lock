@@ -19,15 +19,18 @@
     "@umm/unirx_observablelifecyclemonobehaviour" umm/unirx_observablelifecyclemonobehaviour#^1.0.0
 
 "@umm/cafu_data@umm/cafu_data#^1.0.0":
-  version "1.1.0"
-  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/cdb9b3d9194def174bde3ef71b80e43b22a9aca5"
+  version "1.4.1"
+  resolved "https://codeload.github.com/umm/cafu_data/tar.gz/876ad6b72b3e13c3db9b383a6679555b69c23ba7"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+    "@umm/unirx_observableunitywebrequest" umm/unirx_observableunitywebrequest#^1.0.0
+    "@umm/zenject" umm/zenject#^2.0.0
 
 "@umm/cafu_scene@umm/cafu_scene#^1.0.0":
-  version "1.2.1"
-  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/762a81eb9fd4c0758444ecc9950ffc1ca8f04911"
+  version "1.2.3"
+  resolved "https://codeload.github.com/umm/cafu_scene/tar.gz/b6165eca1b116af32f707e226a0db595574e666b"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/cafu_zenject" umm/cafu_zenject#^1.0.0
@@ -37,8 +40,8 @@
     "@umm/zenject" umm/zenject#^2.0.0
 
 "@umm/cafu_zenject@umm/cafu_zenject#^1.0.0":
-  version "1.0.0"
-  resolved "https://codeload.github.com/umm/cafu_zenject/tar.gz/ec662a3fa1749b4e094e770c8703864314b9eaf0"
+  version "1.0.1"
+  resolved "https://codeload.github.com/umm/cafu_zenject/tar.gz/f86219f2533a0ec9a6f9d4c5ebb474fe1295161f"
   dependencies:
     "@umm/cafu_core" umm/cafu_core#^3.0.0
     "@umm/scripts" umm/scripts#^1.0.0
@@ -46,8 +49,8 @@
     "@umm/zenject" umm/zenject#^2.0.0
 
 "@umm/element_title_attribute@umm/element_title_attribute#^1.0.0":
-  version "1.0.0"
-  resolved "https://codeload.github.com/umm/element_title_attribute/tar.gz/7953203d3ce24a2b452ed982bd29814f2ba799e4"
+  version "1.1.0"
+  resolved "https://codeload.github.com/umm/element_title_attribute/tar.gz/dc608911b0d024b2f778c955941519cf1e6ba7e9"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
@@ -58,8 +61,8 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/extra_unirx@umm/extra_unirx#^1.0.0":
-  version "1.3.4"
-  resolved "https://codeload.github.com/umm/extra_unirx/tar.gz/3911070178213219fb5b6606f55c20bc9ff4d9fc"
+  version "1.3.6"
+  resolved "https://codeload.github.com/umm/extra_unirx/tar.gz/1603245233134ce43dbbe237ecad2d8f0f115e82"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
@@ -91,14 +94,21 @@
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/unirx@umm/unirx#^2.0.0":
-  version "2.1.2"
-  resolved "https://codeload.github.com/umm/unirx/tar.gz/06b8c930847ea4c86c0f7c2409d5bfc4a8409e45"
+  version "2.2.0"
+  resolved "https://codeload.github.com/umm/unirx/tar.gz/8f8330009452c2fcba8cef12e0054a35fc730bb3"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
 
 "@umm/unirx_observablelifecyclemonobehaviour@umm/unirx_observablelifecyclemonobehaviour#^1.0.0":
   version "1.2.2"
   resolved "https://codeload.github.com/umm/unirx_observablelifecyclemonobehaviour/tar.gz/609d94fe31f081a7045014ca95d0c248cc925621"
+  dependencies:
+    "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
+
+"@umm/unirx_observableunitywebrequest@umm/unirx_observableunitywebrequest#^1.0.0":
+  version "1.4.3"
+  resolved "https://codeload.github.com/umm/unirx_observableunitywebrequest/tar.gz/2d3d0401eca9d73f0d4116ac197b2481f1bb7a3b"
   dependencies:
     "@umm/scripts" umm/scripts#^1.0.0
     "@umm/unirx" umm/unirx#^2.0.0
@@ -112,11 +122,12 @@
     "@umm/unirx" umm/unirx#^2.0.0
 
 "@umm/zenject@umm/zenject#^2.0.0":
-  version "2.1.2"
-  resolved "https://codeload.github.com/umm/zenject/tar.gz/7d4350b639a15d4a912396a4a70a32093e867b7d"
+  version "2.2.3"
+  resolved "https://codeload.github.com/umm/zenject/tar.gz/85bd8afba374d1ee9b6c961d7152f993efe625db"
   dependencies:
     "@umm/moq" umm/moq#^1.0.0
     "@umm/scripts" umm/scripts#^1.0.0
+    "@umm/unirx" umm/unirx#^2.0.0
 
 "@umm/zenject_uiscene@umm/zenject_uiscene#^1.0.0":
   version "1.0.1"
@@ -149,9 +160,9 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 glob@^7.1.2:
-  version "7.1.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
-  integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
+  integrity sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"

@@ -1,19 +1,24 @@
 {
     "name": "monry@cafu_sample",
     "references": [
-        "umm@animationevent_dispatcher",
-        "umm@cafu_core@v3",
-        "umm@cafu_data",
-        "umm@cafu_scene",
-        "umm@cafu_zenject",
-        "umm@extra_linq",
-        "umm@extra_unirx",
-        "umm@unirx",
-        "umm@unirx_tense",
-        "Zenject"
+        "GUID:66a8972350feb46ff84f1bc2d372c14f",
+        "GUID:d2ab70376500949fcae5c69bc4471c99",
+        "GUID:41695436dbfa841e680dc13b348fc4d9",
+        "GUID:d9a497ed467b6437885c135c987b7d59",
+        "GUID:bc518c75fbbb247138302eb4734f1de2",
+        "GUID:68540d5208f554f5ea4219ab2b399170",
+        "GUID:fd54c2413c75f43a1a721bc960f2f443",
+        "GUID:342dfbbe1dcd04812b3b045cd6f128dc",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }
