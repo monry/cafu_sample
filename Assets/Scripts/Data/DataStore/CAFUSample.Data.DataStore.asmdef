@@ -1,0 +1,15 @@
+{
+    "name": "CAFUSample.Data.DataStore",
+    "references": [
+        "GUID:81c7da51e2f9046598bbdb1c9460519a",
+        "GUID:d845fbbefbdcd405cae678c9136c070d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

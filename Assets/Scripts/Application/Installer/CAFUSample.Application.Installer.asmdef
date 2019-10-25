@@ -1,0 +1,23 @@
+{
+    "name": "CAFUSample.Application.Installer",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:04f82f1ff3df44e29a1b2cce70510c34",
+        "GUID:d845fbbefbdcd405cae678c9136c070d",
+        "GUID:d083f771321bd4b86acf7fa587128fa2",
+        "GUID:10899a1ccd2cc4810b90b420f8f98a76",
+        "GUID:f772a83d4291f42598a0296f3f03d92e",
+        "GUID:637b90932ce3b496a9cf13ef81d108ae",
+        "GUID:d6a34f546889a414c86b3e0e931c54c0",
+        "GUID:2aedd85a893a7491cb365d5e4b9d5e29",
+        "GUID:8d2bf726f0ff4432384d565a734b6390"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
