@@ -1,3 +1,14 @@
-﻿{
-	"name": "CAFUSample.Presentation.Presenter"
+{
+    "name": "CAFUSample.Presentation.Presenter",
+    "references": [
+        "GUID:f772a83d4291f42598a0296f3f03d92e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }

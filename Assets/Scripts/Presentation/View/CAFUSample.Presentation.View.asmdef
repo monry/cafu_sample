@@ -2,7 +2,8 @@
     "name": "CAFUSample.Presentation.View",
     "references": [
         "GUID:04f82f1ff3df44e29a1b2cce70510c34",
-        "GUID:d845fbbefbdcd405cae678c9136c070d"
+        "GUID:d845fbbefbdcd405cae678c9136c070d",
+        "GUID:2aedd85a893a7491cb365d5e4b9d5e29"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

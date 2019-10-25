@@ -1,3 +1,14 @@
-﻿{
-	"name": "CAFUSample.Domain.UseCase"
+{
+    "name": "CAFUSample.Domain.UseCase",
+    "references": [
+        "GUID:10899a1ccd2cc4810b90b420f8f98a76"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }

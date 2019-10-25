@@ -2,7 +2,8 @@
     "name": "CAFUSample.Data.DataStore",
     "references": [
         "GUID:81c7da51e2f9046598bbdb1c9460519a",
-        "GUID:d845fbbefbdcd405cae678c9136c070d"
+        "GUID:d845fbbefbdcd405cae678c9136c070d",
+        "GUID:637b90932ce3b496a9cf13ef81d108ae"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
