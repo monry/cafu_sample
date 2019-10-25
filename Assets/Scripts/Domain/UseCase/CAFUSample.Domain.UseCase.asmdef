@@ -1,6 +1,9 @@
 {
     "name": "CAFUSample.Domain.UseCase",
     "references": [
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:d845fbbefbdcd405cae678c9136c070d",
         "GUID:10899a1ccd2cc4810b90b420f8f98a76"
     ],
     "includePlatforms": [],

@@ -2,6 +2,7 @@
     "name": "CAFUSample.Data.Repository",
     "references": [
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:d845fbbefbdcd405cae678c9136c070d",
         "GUID:f772a83d4291f42598a0296f3f03d92e"
     ],

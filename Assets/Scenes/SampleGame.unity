@@ -120,6 +120,193 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &237184741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237184742}
+  - component: {fileID: 237184744}
+  - component: {fileID: 237184743}
+  - component: {fileID: 237184746}
+  - component: {fileID: 237184745}
+  - component: {fileID: 237184747}
+  m_Layer: 0
+  m_Name: Holes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &237184742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2112067925}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &237184743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d96a435a8d74b1a8c60ffea57ac84fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetComponents:
+  - {fileID: 237184745}
+  targetIds: []
+  actAsTrigger: 0
+  flowGraphNodePosition: {x: 750, y: 50}
+  source: {fileID: 2186151119768084605, guid: 1a11dc458bddd4656b8397771dd648a5, type: 3}
+  parent: {fileID: 0}
+  sourceCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+  parentCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+--- !u!114 &237184744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b95fb7102484509918a20e817cae386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetComponents:
+  - {fileID: 237184746}
+  targetIds: []
+  actAsTrigger: 1
+  flowGraphNodePosition: {x: 50, y: 50}
+  values: []
+--- !u!114 &237184745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdf624dc0f8461ab95051824fdf204b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetComponents: []
+  targetIds: []
+  actAsTrigger: 0
+  flowGraphNodePosition: {x: 1100, y: 50}
+  baseGameObject: {fileID: 0}
+  transformPath: 
+  actAsLocal: 1
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  rotationEuler: {x: 0, y: 0, z: 0}
+  scale: {x: 0, y: 0, z: 0}
+  baseGameObjectCollector:
+    sourceConnector: {fileID: 237184743}
+    targetConnector: {fileID: 237184745}
+    typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    composerKey: Instantiated
+    collectorKey: BaseGameObject
+  transformPathCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+  positionCollector:
+    sourceConnector: {fileID: 237184746}
+    targetConnector: {fileID: 237184745}
+    typeString: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    composerKey: Position
+    collectorKey: Position
+  rotationCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+  rotationEulerCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+  scaleCollector:
+    sourceConnector: {fileID: 0}
+    targetConnector: {fileID: 0}
+    typeString: 
+    composerKey: 
+    collectorKey: 
+--- !u!114 &237184746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78acaa924bf24aa3aee766e87859d0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetComponents:
+  - {fileID: 237184743}
+  targetIds: []
+  actAsTrigger: 0
+  flowGraphNodePosition: {x: 400, y: 50}
+  holeCollector:
+    sourceConnector: {fileID: 237184744}
+    targetConnector: {fileID: 237184746}
+    typeString: CAFUSample.Application.ValueObject.Transaction.Hole, CAFUSample.Application.ValueObject,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    composerKey: Hole
+    collectorKey: Hole
+--- !u!114 &237184747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237184741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 237184744}
+  _identifier: 
+  _useSceneContext: 1
+  _context: {fileID: 0}
+  _bindType: 1
 --- !u!1 &301417372
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1560893569}
   - component: {fileID: 1560893568}
+  - component: {fileID: 1560893567}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -415,6 +603,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1560893567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560893566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d86e7429504d90b1d2b9baeb276be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1560893568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 1560893567}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -491,6 +692,7 @@ Transform:
   m_Children:
   - {fileID: 1461558257}
   - {fileID: 1180977520}
+  - {fileID: 237184742}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -6,7 +6,7 @@ namespace CAFUSample.Application.Installer
     {
         public override void InstallBindings()
         {
-            
+
         }
     }
 }
