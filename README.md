@@ -28,3 +28,7 @@ Released under the MIT license, see [LICENSE.txt](LICENSE.txt)
 #### [いらすとや](http://www.irasutoya.com/)
 
 * [All of images](Assets/Images)
+
+#### [効果音ラボ](https://soundeffect-lab.info/)
+
+* [All of sounds](Assets/Sounds)
