@@ -1,0 +1,16 @@
+{
+    "name": "CAFUSample.Presentation.Presenter",
+    "references": [
+        "GUID:04f82f1ff3df44e29a1b2cce70510c34",
+        "GUID:d845fbbefbdcd405cae678c9136c070d",
+        "GUID:f772a83d4291f42598a0296f3f03d92e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

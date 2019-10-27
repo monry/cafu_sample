@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/System.unity
     guid: 1ed38dc2eb797480eb5b5f24bd0f2d95
   - enabled: 1
-    path: Assets/Modules/umm@zenject_uiscene/Scenes/UI.unity
-    guid: bb9fced3d89ea4f3dbcbb30bcb3313ab
-  - enabled: 1
     path: Assets/Scenes/SampleGame.unity
     guid: c3bcff5e4b4ec46aca51dfcbb4a07dda
   - enabled: 1
